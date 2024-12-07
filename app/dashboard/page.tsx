@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-2 justify-center items-center px-3">
+    <div className="flex flex-col items-center justify-center gap-2 px-3">
       <Button size={"sm"} className="w-full">
         공유하기
       </Button>
