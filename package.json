@@ -11,7 +11,10 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{tsx,ts,jsx,js}": "eslint --fix"
+    "**/*.{tsx,ts,jsx,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.2",
