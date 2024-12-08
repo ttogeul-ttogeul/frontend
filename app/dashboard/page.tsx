@@ -46,6 +46,7 @@ export default function Page() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      auto deploy test
     </div>
   );
 }
