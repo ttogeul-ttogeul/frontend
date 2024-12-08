@@ -27,4 +27,5 @@ Sentry.init({
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so
   // that it will also get attached to your source maps
   debug: false,
+  enabled: process.env.SENTRY_ENVIRONMENT === "production",
 });
