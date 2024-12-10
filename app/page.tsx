@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,7 +11,9 @@ export default function Home() {
         </span>
         <span>돌아보기</span>
       </h1>
-      <Button>분석하기</Button>
+      <Link href="/analysis-input">
+        <Button>분석하기</Button>
+      </Link>
     </main>
   );
 }
