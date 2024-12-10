@@ -23,4 +23,6 @@ export const BLOGS = [
     urlExample: "https://velog.io/@example",
     homeUrl: "https://velog.io",
   },
-];
+] as const;
+
+export type BlogType = (typeof BLOGS)[number]["id"];
