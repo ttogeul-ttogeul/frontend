@@ -6,7 +6,7 @@ export default function SelectBlogSection() {
     <div className="flex flex-col gap-1">
       {BLOGS.map((blog) => (
         <Button key={blog.id} className={blog.bgColor}>
-          {blog.title}
+          {blog.name}
         </Button>
       ))}
     </div>
