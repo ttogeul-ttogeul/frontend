@@ -59,6 +59,11 @@ const config: Config = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        blog: {
+          naver: "#00C73C",
+          tistory: "#EB531F",
+          velog: "#20C997",
+        },
       },
     },
   },
