@@ -1,18 +1,20 @@
+import Title from "@/components/home/title";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
-      <div>2024</div>
-      <h1 className="flex flex-col">
-        <span>
-          내 <span className="text-red-500">블로그</span>
-        </span>
-        <span>돌아보기</span>
-      </h1>
+    <main className="mt-100pxr">
+      <div className="mb-10 text-gray-50">
+        <div className="text-2xl/[30px] font-medium">2024</div>
+        <h1 className="mt-4 flex flex-col">
+          <Title highlight="테" title="크" />
+          <Title highlight="블" title="로그" />
+          <Title highlight="리" title="포트" />
+        </h1>
+      </div>
       <Link href="/analysis-input">
-        <Button>분석하기</Button>
+        <Button variant={"secondary"}>분석하기</Button>
       </Link>
     </main>
   );
