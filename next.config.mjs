@@ -1,6 +1,8 @@
 import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: false,
+};
 
 // Make sure adding Sentry options is the last code to run before exporting
 export default withSentryConfig(nextConfig, {
