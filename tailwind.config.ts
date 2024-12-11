@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import type { Config } from "tailwindcss";
 
+type PxrObject = {
+  [key: `${number}pxr`]: string; // 키는 "숫자pxr" 형식, 값은 pxToRem 함수의 반환값 (string)
+};
+
+const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -65,6 +71,24 @@ const config: Config = {
           tistory: "#EB531F",
           velog: "#20C997",
         },
+      },
+      fontSize: {
+        ...Array.from({ length: 100 }, (_, index) => index + 1).reduce(
+          (acc, cur) => {
+            acc[`${cur}pxr`] = pxToRem(cur);
+            return acc;
+          },
+          {} as PxrObject,
+        ),
+      },
+      spacing: {
+        ...Array.from({ length: 1920 }, (_, index) => index + 1).reduce(
+          (acc, cur) => {
+            acc[`${cur}pxr`] = pxToRem(cur);
+            return acc;
+          },
+          {} as PxrObject,
+        ),
       },
     },
   },
