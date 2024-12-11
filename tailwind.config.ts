@@ -2,7 +2,7 @@
 import type { Config } from "tailwindcss";
 
 type PxrObject = {
-  [key: `${number}pxr`]: string; // 키는 "숫자pxr" 형식, 값은 pxToRem 함수의 반환값 (string)
+  [key: `${number}pxr`]: string;
 };
 
 const pxToRem = (px: number, base = 16) => `${px / base}rem`;
