@@ -7,6 +7,7 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./constants/**/*.{js,ts,jsx,tsx,mdx}",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -58,6 +59,11 @@ const config: Config = {
           3: "hsl(var(--chart-3))",
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
+        },
+        blog: {
+          naver: "#00C73C",
+          tistory: "#EB531F",
+          velog: "#20C997",
         },
       },
     },
