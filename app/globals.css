@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  white-space: pre-wrap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
