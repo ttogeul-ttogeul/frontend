@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SelectBlogSection, InputBlogSection } from ".";
-import Title from "@/components/analysis-input/title";
+import Title from "@/components/blog-input/title";
 import { type BlogType } from "@/constants/blogs";
 
 export default function Page() {

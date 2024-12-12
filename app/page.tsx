@@ -13,7 +13,7 @@ export default function Home() {
           <HighlightedTitle highlight="리">포트</HighlightedTitle>
         </h1>
       </div>
-      <Link href="/analysis-input">
+      <Link href="/blog-input">
         <Button>분석하기</Button>
       </Link>
     </main>
