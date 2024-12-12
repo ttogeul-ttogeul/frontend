@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="mt-100pxr">
-      <div className="mb-10 text-gray-50">
+      <div className="mb-10">
         <div className="text-2xl/[30px] font-medium">2024</div>
         <h1 className="mt-4 flex flex-col">
           <HighlightedTitle highlight="테">크</HighlightedTitle>
