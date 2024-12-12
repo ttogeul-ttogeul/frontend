@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 type TitleProps = {
   highlight: string;
@@ -12,7 +12,7 @@ export default function HighlightedTitle({
   className,
 }: TitleProps) {
   return (
-    <span className={clsx("text-5xl/[3.5rem] font-bold", className)}>
+    <span className={cn("text-5xl/[3.5rem] font-bold", className)}>
       <span className="text-[#8B5CF6]">{highlight}</span>
       {children}
     </span>
