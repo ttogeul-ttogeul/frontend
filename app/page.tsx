@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
       </div>
       <Link href="/analysis-input">
-        <Button variant={"secondary"}>분석하기</Button>
+        <Button>분석하기</Button>
       </Link>
     </main>
   );

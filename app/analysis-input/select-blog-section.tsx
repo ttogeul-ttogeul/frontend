@@ -16,7 +16,8 @@ export default function SelectBlogSection({
       {BLOGS.map((blog) => (
         <Button
           key={blog.id}
-          className={`${blog.bgColor}`}
+          variant={"black"}
+          className={`${blog.bgColor} text-white`}
           onClick={() => {
             setBlogType(blog.id);
             setSelectMode(false);
