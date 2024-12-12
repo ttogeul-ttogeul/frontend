@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object, string, z } from "zod";
+import { Input } from "@/components/ui/input";
 
 const schema = object({
   blog_url: string().min(1).max(3),
@@ -15,7 +16,7 @@ export default function InputBlogSection({ blogType }: { blogType: string }) {
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { blog_url: "" },
@@ -29,10 +30,10 @@ export default function InputBlogSection({ blogType }: { blogType: string }) {
   return (
     <div>
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className="border-2"
+        <Input
           placeholder={blog?.urlExample}
           {...register("blog_url")}
+          className={errors?.blog_url?.message ? "border-2 border-red-600" : ""}
         />
         <Button type="submit" disabled={!isDirty || !isValid}>
           분석하기
