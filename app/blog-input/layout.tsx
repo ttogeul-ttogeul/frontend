@@ -1,4 +1,4 @@
-import NavigationBar from "@/components/analysis-input/navigation-bar";
+import NavigationBar from "@/components/blog-input/navigation-bar";
 import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
