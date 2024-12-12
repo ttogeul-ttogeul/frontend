@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-gradient-to-b from-violet-700 to-blue-700 text-gray-50 focus-visible:border-2 focus-visible:border-gray-50 hover:border-2 hover:border-gray-50 active:from-violet-900 active:to-violet-900",
-        black:
+        filled:
           "bg-gray-950 text-gray-50 focus-visible:border-2 focus-visible:border-gray-50 hover:border-2 hover:border-gray-50",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
