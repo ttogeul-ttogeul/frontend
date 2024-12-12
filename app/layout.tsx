@@ -16,9 +16,8 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <div className="mx-auto h-full w-full max-w-96 overflow-x-hidden border-2 bg-gray-950 px-6">
-          {children}
+          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
         </div>
-        <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
       </body>
     </html>
   );
