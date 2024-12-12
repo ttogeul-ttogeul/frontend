@@ -7,7 +7,7 @@ export default function NavigationBar() {
   const router = useRouter();
 
   return (
-    <div className="my-2">
+    <div className="mb-5 mt-6">
       <Button variant="ghost" onClick={() => router.back()}>
         {"< "}뒤로
       </Button>
