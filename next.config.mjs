@@ -1,7 +1,18 @@
 import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img1.daumcdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "velog.velcdn.com",
+      },
+    ],
+  },
 };
 
 // Make sure adding Sentry options is the last code to run before exporting
