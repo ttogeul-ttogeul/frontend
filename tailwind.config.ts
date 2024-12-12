@@ -20,6 +20,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        suit: "SUIT",
+        ridibatang: "RIDIBatang",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
