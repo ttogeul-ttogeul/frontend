@@ -10,7 +10,7 @@ export default function Page() {
   const [blogType, setBlogType] = useState<BlogType>("tistory");
 
   return (
-    <div>
+    <div className="flex flex-col gap-20">
       <Title selectMode={selectMode} />
 
       {selectMode ? (
