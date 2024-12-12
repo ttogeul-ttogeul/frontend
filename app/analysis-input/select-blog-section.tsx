@@ -12,7 +12,7 @@ export default function SelectBlogSection({
   setBlogType,
 }: SelectBlogSectionType) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-3">
       {BLOGS.map((blog) => (
         <Button
           key={blog.id}
