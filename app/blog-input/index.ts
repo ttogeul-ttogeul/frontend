@@ -1,2 +1,3 @@
-export { default as InputBlogSection } from "./input-blog-section";
-export { default as SelectBlogSection } from "./select-blog-section";
+export { default as TitleSection } from "./title-section";
+export { default as MainSection } from "./main-section";
+export { default as FooterSection } from "./footer-section";
