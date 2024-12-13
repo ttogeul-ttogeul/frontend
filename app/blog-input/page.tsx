@@ -1,26 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { SelectBlogSection, InputBlogSection } from ".";
-import Title from "@/components/blog-input/title";
-import { type BlogType } from "@/constants/blogs";
+import { TitleSection, MainSection, FooterSection } from ".";
+import { type BlogDomain } from "@/constants/blogs";
+import NavigationBar from "@/components/blog-input/navigation-bar";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   const [selectMode, setSelectMode] = useState(true);
-  const [blogType, setBlogType] = useState<BlogType>("tistory");
+  const [blogDomain, setBlogDomain] = useState<BlogDomain>("tistory");
+
+  const onClickHandler = () => {
+    if (selectMode) router.push("/");
+    if (!selectMode) setSelectMode((selectMode) => !selectMode);
+  };
 
   return (
-    <div className="flex flex-col gap-20">
-      <Title selectMode={selectMode} />
+    <>
+      <NavigationBar onClickHandler={onClickHandler} />
 
-      {selectMode ? (
-        <SelectBlogSection
+      <div className="flex flex-col gap-20">
+        <TitleSection selectMode={selectMode} blogDomain={blogDomain} />
+
+        <MainSection
+          selectMode={selectMode}
           setSelectMode={setSelectMode}
-          setBlogType={setBlogType}
+          blogDomain={blogDomain}
+          setBlogDomain={setBlogDomain}
         />
-      ) : (
-        <InputBlogSection blogType={blogType} />
-      )}
-    </div>
+      </div>
+
+      <FooterSection selectMode={selectMode} blogDomain={blogDomain} />
+    </>
   );
 }
