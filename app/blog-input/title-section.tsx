@@ -1,6 +1,15 @@
-import HighlightedTitle from "../home/highlighted-title";
+import { BlogDomain } from "@/constants/blogs";
+import HighlightedTitle from "../../components/home/highlighted-title";
 
-export default function Title({ selectMode }: { selectMode: boolean }) {
+type TitleSectionProps = {
+  selectMode: boolean;
+  blogDomain: BlogDomain;
+};
+
+export default function TitleSection({
+  selectMode,
+  blogDomain,
+}: TitleSectionProps) {
   return (
     <div className="text-2xl/[1.875rem] font-medium">
       {selectMode ? (
@@ -25,10 +34,12 @@ export default function Title({ selectMode }: { selectMode: boolean }) {
             </HighlightedTitle>
             <span>입력해주세요.</span>
           </h1>
-          <p className="mt-3 text-base font-normal text-gray-400">
-            HTML과 CSS로 스킨을 편집해서 사용하시는 경우에는 분석이 제한될 수
-            있습니다.
-          </p>
+          {blogDomain === "tistory" && (
+            <p className="mt-3 text-base font-normal text-gray-400">
+              HTML과 CSS로 스킨을 편집해서 사용하시는 경우에는 분석이 제한될 수
+              있습니다.
+            </p>
+          )}
         </div>
       )}
     </div>
