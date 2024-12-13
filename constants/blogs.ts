@@ -1,9 +1,10 @@
 export const BLOGS = [
   {
     id: "tistory",
-    name: "티스토리",
+    name: "Tistory",
     icon: "",
     bgColor: "bg-blog-tistory",
+    textColor: "text-blog-tistory",
     urlExample: "https://example.tistory.com",
     homeUrl: "https://www.tistory.com",
   },
@@ -12,9 +13,10 @@ export const BLOGS = [
     name: "Velog",
     icon: "",
     bgColor: "bg-blog-velog",
+    textColor: "text-blog-velog",
     urlExample: "https://velog.io/@example",
     homeUrl: "https://velog.io",
   },
 ] as const;
 
-export type BlogType = (typeof BLOGS)[number]["id"];
+export type BlogDomain = (typeof BLOGS)[number]["id"];
