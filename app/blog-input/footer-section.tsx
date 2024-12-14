@@ -16,16 +16,16 @@ export default function FooterSection({
     <div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform whitespace-pre text-center text-gray-500">
       {selectMode ? (
         <div className="flex flex-col gap-3 whitespace-pre">
-          {"다른 블로그는 지원 준비 중입니다.\n(텍스트 논의 필요)"}
+          {"더 다양한 서비스를 지원할 수 있도록\n준비 중입니다."}
         </div>
       ) : (
         <div>
-          <div>주소를 모르신다면?</div>
+          <div>주소를 잊어버렸다면?</div>
           <Link
             href={blog?.homeUrl as string}
             className={`${blog?.textColor} underline`}
           >
-            {blog?.name}로 이동하기{">"}
+            {blog?.name} 홈으로{" >"}
           </Link>
         </div>
       )}

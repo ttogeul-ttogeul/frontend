@@ -13,7 +13,7 @@ export const BLOGS: BlogType[] = [
     name: "Tistory",
     bgColor: "bg-blog-tistory",
     textColor: "text-blog-tistory",
-    urlExample: "https://example.tistory.com",
+    urlExample: "https://blogid.tistory.com",
     homeUrl: "https://www.tistory.com",
   },
   {
@@ -21,7 +21,7 @@ export const BLOGS: BlogType[] = [
     name: "Velog",
     bgColor: "bg-blog-velog",
     textColor: "text-blog-velog",
-    urlExample: "https://velog.io/@example",
+    urlExample: " https://velog.io/@userid",
     homeUrl: "https://velog.io",
   },
 ] as const;
