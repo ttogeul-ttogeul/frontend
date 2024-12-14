@@ -1,6 +1,6 @@
 "use server";
 
-import API from "..";
+import API from "@/app/api";
 import { RootResponse } from "./types";
 
 export const fetchRoot = async () => {
