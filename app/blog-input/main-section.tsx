@@ -1,10 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
 import { Button } from "@/components/ui/button";
-import { BLOGS, type BlogDomain } from "@/constants/blogs";
+import { BLOGS, BlogType, type BlogDomain } from "@/constants/blogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object, string, z } from "zod";
 import { Input } from "@/components/ui/input";
+import TistoryLogo from "@/components/icons/svgs/logo-tistory.svg";
+import VelogLogo from "@/components/icons/svgs/logo-velog.svg";
+import ArrowRight from "@/components/icons/svgs/arrow-right.svg";
 
 const schema = object({
   blog_url: string().min(1),
@@ -39,11 +42,16 @@ export default function MainSection({
 
   const blog = BLOGS.find((blog) => blog.id === blogDomain);
 
+  const logos = {
+    tistory: <TistoryLogo width={24} height={24} />,
+    velog: <VelogLogo width={24} height={24} />,
+  };
+
   return (
     <>
       {selectMode ? (
         <div className="flex flex-col gap-3">
-          {BLOGS.map((blog) => (
+          {BLOGS.map((blog: BlogType) => (
             <Button
               key={blog.id}
               variant={"filled"}
@@ -53,6 +61,7 @@ export default function MainSection({
                 setSelectMode(false);
               }}
             >
+              {logos[blog.id]}
               {blog.name}
             </Button>
           ))}
@@ -68,6 +77,7 @@ export default function MainSection({
           />
           <Button type="submit" disabled={!isDirty || !isValid}>
             분석하기
+            <ArrowRight />
           </Button>
         </form>
       )}
