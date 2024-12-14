@@ -15,7 +15,7 @@ export default function LoadingText() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentMessageIdx((prevIdx) => (prevIdx + 1) % messages.length);
-    }, 1500);
+    }, 3000);
 
     return () => clearInterval(intervalId);
   }, []);
