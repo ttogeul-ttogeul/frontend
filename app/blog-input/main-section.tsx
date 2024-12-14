@@ -76,7 +76,7 @@ export default function MainSection({
             }
           />
           <Button type="submit" disabled={!isDirty || !isValid}>
-            분석하기
+            분석 결과 보기
             <ArrowRight />
           </Button>
         </form>

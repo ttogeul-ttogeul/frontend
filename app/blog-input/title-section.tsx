@@ -28,9 +28,10 @@ export default function TitleSection({
             <div>입력하세요</div>
           </Title>
           {blogDomain === "tistory" && (
-            <p className="mt-3 text-base font-normal text-gray-400">
-              HTML과 CSS로 스킨을 편집해서 사용하시는 경우에는 분석이 제한될 수
-              있습니다.
+            <p className="mt-3 whitespace-pre text-base font-normal text-gray-400">
+              {
+                "블로그 스킨이 정교하게 커스텀된 경우,\n분석이 제한될 수 있습니다."
+              }
             </p>
           )}
         </div>
