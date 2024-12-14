@@ -5,6 +5,8 @@ import Bar from "../ui/bar";
 import StatCard from "../ui/stat-card";
 import Text from "../ui/text";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
+import { useAtom } from "jotai";
+import { monthlyDistributionAtom } from "./store/atom";
 
 interface TotalPostingCardProps {
   totalPostCount: BlogAnalytics["result"]["totalPostCount"];
@@ -13,44 +15,30 @@ interface TotalPostingCardProps {
 export default function TotalPostingCard({
   totalPostCount,
 }: TotalPostingCardProps) {
-  const data = useMemo(
-    () => ({
-      january: 2,
-      february: 5,
-      march: 1,
-      april: 0,
-      may: 0,
-      june: 2,
-      july: 5,
-      august: 4,
-      september: 3,
-      october: 0,
-      november: 3,
-      december: 0,
-    }),
-    [],
+  const [monthlyDistribution] = useAtom(monthlyDistributionAtom);
+  const MAX_VALUE = useMemo(
+    () => Math.max(...Object.values(monthlyDistribution)),
+    [monthlyDistribution],
   );
-  const MAX_VALUE = useMemo(() => Math.max(...Object.values(data)), [data]);
   const MAX_HEIGHT = 173;
 
   return (
     <StatCard
       title={
         <Text as="h3" className={"text-center font-light"}>
-          {"올해 "}
+          {"올해 총 "}
           <span className={"font-bold"}>{`${totalPostCount}개`}</span>
-          {"의 글을\n포스팅하셨어요"}
+          {"의\n글을 썼어요"}
         </Text>
       }
       description={
         <Text className={"text-gray-400"}>
-          테크블로거들은 <span className={"underline"}>평균 n개</span>의 글을
-          썼어요
+          테크블로거들은 평균 13.8개의 글을 썼어요
         </Text>
       }
     >
       <>
-        {Object.entries(data).map(([key, value], idx) => (
+        {Object.entries(monthlyDistribution).map(([key, value], idx) => (
           <Bar
             key={`${key}-${idx}`}
             className={"rounded"}
