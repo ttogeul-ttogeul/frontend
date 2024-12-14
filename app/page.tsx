@@ -1,5 +1,6 @@
 import HighlightedTitle from "@/components/home/highlighted-title";
 import { Button } from "@/components/ui/button";
+import ArrowRight from "@/components/icons/arrow-right";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,7 +15,10 @@ export default function Home() {
         </h1>
       </div>
       <Link href="/blog-input">
-        <Button>분석하기</Button>
+        <Button>
+          분석하기
+          <ArrowRight />
+        </Button>
       </Link>
     </main>
   );
