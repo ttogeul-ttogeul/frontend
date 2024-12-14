@@ -1,7 +1,7 @@
 // loading ui 구현을 위한 임시 페이지
-import LoadingText from "@/components/loading/loading-text";
+import LoadingText from "./loading-text";
 
-export default function Page() {
+export default function AnalysisLoading() {
   return (
     <div className="whitespace-pre text-center font-normal">
       <div className="mt-268pxr flex flex-col justify-center gap-8 align-middle">
