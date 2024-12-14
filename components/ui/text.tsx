@@ -16,7 +16,7 @@ const Text = <T extends React.ElementType = "p">({
   const Tag = as || "p";
   return (
     <Tag
-      className={cn("whitespace-pre-wrap text-gray-50", className)}
+      className={cn("whitespace-pre-wrap break-keep text-gray-50", className)}
       {...props}
     >
       {children}
