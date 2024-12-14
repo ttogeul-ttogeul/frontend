@@ -5,21 +5,24 @@ import { useMemo } from "react";
 import { DAY_MAPPING } from "./constants";
 
 export default function DayOfWeekCard() {
-  const data = {
-    monday: 3,
-    tuesday: 4,
-    wednesday: 5,
-    thursday: 4,
-    friday: 6,
-    saturday: 2,
-    sunday: 1,
-  };
-  const MAX_DAY = useMemo(() => Math.max(...Object.values(data)), []);
+  const data = useMemo(
+    () => ({
+      monday: 3,
+      tuesday: 4,
+      wednesday: 5,
+      thursday: 4,
+      friday: 6,
+      saturday: 2,
+      sunday: 1,
+    }),
+    [],
+  );
+  const MAX_DAY = useMemo(() => Math.max(...Object.values(data)), [data]);
   const MAX_HEIGHT = 173;
 
   const mappedData: [string, number][] = useMemo(
     () => Object.entries(data).map(([key, value]) => [DAY_MAPPING[key], value]),
-    [],
+    [data],
   );
 
   return (

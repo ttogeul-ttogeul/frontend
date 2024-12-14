@@ -1,16 +1,23 @@
 import StatCard from "../ui/stat-card";
 import Image from "next/image";
 import Text from "../ui/text";
+import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 
-export default function ImageCountCard() {
+interface ImageCountCardProps {
+  averageImageCount: BlogAnalytics["result"]["averageImageCount"];
+}
+
+export default function ImageCountCard({
+  averageImageCount,
+}: ImageCountCardProps) {
   return (
     <StatCard
       className={"relative items-start justify-start"}
-      label={<Text>평균 이미지 수</Text>}
-      title={<Text>{"n개"}</Text>}
+      label={<Text>글별 이미지 개수</Text>}
+      title={<Text>{`${averageImageCount}개`}</Text>}
       description={
         <Text className={"max-w-[212px] text-gray-400"}>
-          테크블로거들은 평균 3개의 이미지를 사용해요
+          테크블로거들은 글마다 4.2개의 이미지를 활용해요
         </Text>
       }
       height={"h-[150px]"}
