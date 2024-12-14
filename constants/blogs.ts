@@ -1,20 +1,27 @@
-export const BLOGS = [
+export type BlogType = {
+  id: "tistory" | "velog";
+  name: string;
+  bgColor: string;
+  textColor: string;
+  urlExample: string;
+  homeUrl: string;
+};
+
+export const BLOGS: BlogType[] = [
   {
     id: "tistory",
     name: "Tistory",
-    icon: "",
     bgColor: "bg-blog-tistory",
     textColor: "text-blog-tistory",
-    urlExample: "https://example.tistory.com",
+    urlExample: "https://blogid.tistory.com",
     homeUrl: "https://www.tistory.com",
   },
   {
     id: "velog",
     name: "Velog",
-    icon: "",
     bgColor: "bg-blog-velog",
     textColor: "text-blog-velog",
-    urlExample: "https://velog.io/@example",
+    urlExample: " https://velog.io/@userid",
     homeUrl: "https://velog.io",
   },
 ] as const;
