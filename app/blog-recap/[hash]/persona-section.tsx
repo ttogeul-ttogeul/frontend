@@ -31,10 +31,18 @@ export default function PersonaSection() {
           height={312}
         />
         <div className={"flex h-12 w-full items-center justify-center"}>
-          <Text>
-            <span className={"font-bold"}>{persona.category}</span>
-            {` 글을 가장 많이 작성하셨어요`}
-          </Text>
+          {persona.category ? (
+            <Text>
+              <span className={"font-bold"}>{persona.category}</span>
+              {` 글을 가장 많이 작성하셨어요`}
+            </Text>
+          ) : (
+            <Text className="text-center">
+              {
+                "아직 12월 한 발 남았다! 2024년 가기 전에,\n올해 회고글 하나쯤 어떨까요?"
+              }
+            </Text>
+          )}
         </div>
       </div>
     </section>
