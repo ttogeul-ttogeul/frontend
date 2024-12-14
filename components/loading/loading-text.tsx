@@ -3,11 +3,10 @@
 import React, { useState, useEffect } from "react";
 
 const messages = [
-  "테크블로거들은\n평균 20개의 글을 썼어요",
-  "짱짱맨",
-  "넌 최고야",
-  "또글또글 화이팅",
-  "빙글빙글\n돌아가는\n이세상",
+  "블로그를 분석 중이에요",
+  "올해 테크블로거들은\n평균 13.5개의 글을 썼어요",
+  "내가 올해 쓴 글을 분석하고 있으니, 조금만 기다려주세요!",
+  "올해 테크블로거들은 주로 일요일에 글을 발행했어요",
 ];
 
 export default function LoadingText() {
