@@ -17,20 +17,24 @@ export default function PersonaSection() {
           "flex flex-col items-center rounded-lg border border-solid border-gray-700 p-2 font-bold"
         }
       >
-        <div className={"mb-2 flex h-12 w-full items-center justify-center"}>
+        <div className={"flex h-12 w-full items-center justify-center"}>
           <Text as="h3" className={"text-2xl"}>
             {persona.title}
           </Text>
         </div>
         <Image
+          className={"my-2 object-cover"}
           priority
           src={persona.imageUrl}
           alt="persona"
           width={312}
-          height={0}
+          height={312}
         />
-        <div className={"mt-2 h-12 w-full"}>
-          <Text>{`${persona.category} 글을 가장 많이 작성하셨어요`}</Text>
+        <div className={"flex h-12 w-full items-center justify-center"}>
+          <Text>
+            <span className={"font-bold"}>{persona.category}</span>
+            {` 글을 가장 많이 작성하셨어요`}
+          </Text>
         </div>
       </div>
     </section>

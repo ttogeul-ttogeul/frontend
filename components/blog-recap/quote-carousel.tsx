@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import Text from "../ui/text";
-import Seperator from "../ui/seperator";
 import { useAtom } from "jotai";
 import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
 
@@ -30,11 +29,7 @@ export default function QuoteCarousel() {
   };
 
   return (
-    <div className={"flex w-[312px] flex-col items-center justify-center"}>
-      <Text as="h2" className={"text-2xl font-bold"}>
-        올해 이 블로그의 명언
-      </Text>
-      <Seperator className={"h-4"} />
+    <>
       <Carousel
         setApi={(api) => {
           setApi(api);
@@ -63,7 +58,11 @@ export default function QuoteCarousel() {
                     }
                   />
                   <div className={"absolute px-6"}>
-                    <Text className={"text-center font-ridibatang text-lg"}>
+                    <Text
+                      className={
+                        "break-keep text-center font-ridibatang text-lg"
+                      }
+                    >
                       {quote}
                     </Text>
                     <Text>{`- ${blogTitle},\n<${postTitle}> 중 -`}</Text>
@@ -83,6 +82,6 @@ export default function QuoteCarousel() {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
