@@ -17,9 +17,7 @@ export default function AnalysisLoading() {
       </div>
 
       <p className="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm text-gray-500">
-        {
-          "올해 쓴 글이 많은 경우 분석에 시간이 걸릴 수 있어요.\n(최대 1분 이내)"
-        }
+        {"올해 쓴 글이 많으면 분석에 시간이 걸릴 수 있어요.\n(최대 1분 이내)"}
       </p>
     </div>
   );
