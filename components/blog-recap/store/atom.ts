@@ -13,6 +13,10 @@ export const totalPostCountAtom = atom(
 
 export const blogTitleAtom = atom((get) => get(blogAnalytics)?.blogTitle ?? "");
 
+export const blogImageUrlAtom = atom(
+  (get) => get(blogAnalytics)?.blogImageUrl ?? "",
+);
+
 export const averageWordCountAtom = atom(
   (get) => get(blogAnalytics)?.result.averageWordCount ?? 0,
 );
