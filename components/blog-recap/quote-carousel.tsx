@@ -11,21 +11,28 @@ import Image from "next/image";
 import { useState } from "react";
 import Text from "../ui/text";
 import Seperator from "../ui/seperator";
+import { useAtom } from "jotai";
+import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
 
 export default function QuoteCarousel() {
+  const [blogTitle] = useAtom(blogTitleAtom);
+  const [quotes] = useAtom(quotesAtom);
+  const [blogImageUrl] = useAtom(blogImageUrlAtom);
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const COUNT = 3;
+  const COUNT = quotes.length;
 
   const handleSelect = (api: CarouselApi) => {
     if (api) {
       setCurrent(api.selectedScrollSnap());
     }
   };
+
   return (
     <div className={"flex w-[312px] flex-col items-center justify-center"}>
       <Text as="h2" className={"text-2xl font-bold"}>
-        이 블로거의 올해 명언
+        올해 이 블로그의 명언
       </Text>
       <Seperator className={"h-4"} />
       <Carousel
@@ -37,14 +44,12 @@ export default function QuoteCarousel() {
         className="mb-4 h-[400px] w-full max-w-[300px]"
       >
         <CarouselContent>
-          {Array.from({ length: COUNT }).map((_, index) => (
-            <CarouselItem key={index} className={"h-[400px]"}>
+          {quotes.map(({ quote, postTitle }) => (
+            <CarouselItem key={quote} className={"h-[400px]"}>
               <Card className={"relative h-full rounded-2xl border-none"}>
                 <CardContent className="flex aspect-square h-full w-full items-center justify-center p-0">
                   <Image
-                    src={
-                      "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F1956816%2Fattach%2F414ad072fd374f72ab96491b2773a29f"
-                    }
+                    src={blogImageUrl}
                     alt="sample"
                     width={300}
                     height={400}
@@ -54,16 +59,15 @@ export default function QuoteCarousel() {
                   <div
                     role="overlay"
                     className={
-                      "absolute h-full w-full rounded-2xl bg-black opacity-60"
+                      "absolute h-full w-full rounded-2xl bg-black opacity-80"
                     }
                   />
-                  <Text
-                    className={"absolute text-center font-ridibatang text-lg"}
-                  >
-                    {
-                      '"사람을 이해하는 능력은 PM의 가장\n중요한 자질이자, 제품의 성공을\n좌우하는 힘이다."\n-움채채-'
-                    }
-                  </Text>
+                  <div className={"absolute px-6"}>
+                    <Text className={"text-center font-ridibatang text-lg"}>
+                      {quote}
+                    </Text>
+                    <Text>{`- ${blogTitle},\n<${postTitle}> 중 -`}</Text>
+                  </div>
                 </CardContent>
               </Card>
             </CarouselItem>
