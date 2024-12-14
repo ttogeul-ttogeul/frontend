@@ -47,7 +47,7 @@ export default function TotalPostingCard({
             }
             color={
               value > 0
-                ? "bg-gradient-to-r from-violet-600 to-blue-600"
+                ? "bg-gradient-to-b from-violet-600 to-blue-600"
                 : "bg-slate-700"
             }
           />

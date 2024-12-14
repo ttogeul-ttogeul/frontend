@@ -32,9 +32,9 @@ export default function DayOfWeekCard() {
     <StatCard
       title={
         <Text as="h3" className={"text-center font-light"}>
-          {"올해 주로 "}
+          {"주로 "}
           <span className={"font-bold"}>{`${maxWeekday}요일`}</span>
-          {"에 글을\n포스팅하셨어요"}
+          {"에 글을\n발행했어요"}
         </Text>
       }
       description={
@@ -49,7 +49,7 @@ export default function DayOfWeekCard() {
           key={key}
           color={
             value === maxDay
-              ? "bg-gradient-to-r from-violet-600 to-blue-600"
+              ? "bg-gradient-to-b from-violet-600 to-blue-600"
               : "bg-slate-700"
           }
         >

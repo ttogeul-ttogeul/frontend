@@ -60,12 +60,25 @@ export default function QuoteCarousel() {
                   <div className={"absolute px-6"}>
                     <Text
                       className={
-                        "break-keep text-center font-ridibatang text-lg"
+                        "mb-2 break-keep text-center font-ridibatang text-lg"
                       }
                     >
                       {quote}
                     </Text>
-                    <Text>{`- ${blogTitle},\n<${postTitle}> 중 -`}</Text>
+                    <div className="flex items-start justify-center text-sm">
+                      <Text className="text-gray-400">{`- `}</Text>
+                      <Text className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-gray-400">
+                        {blogTitle}
+                      </Text>
+                      <Text className="text-gray-400">{`,`}</Text>
+                    </div>
+                    <div className="flex items-start justify-center text-sm">
+                      <Text className="text-gray-400">{`<`}</Text>
+                      <Text className="max-w-[180px] overflow-hidden text-ellipsis whitespace-nowrap text-gray-400">
+                        {postTitle}
+                      </Text>
+                      <Text className="text-gray-400">{`> 중 -`}</Text>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
