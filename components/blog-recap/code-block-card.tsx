@@ -1,17 +1,24 @@
 import StatCard from "../ui/stat-card";
 import Image from "next/image";
 import Text from "../ui/text";
+import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 
-export default function CodeBlockCard() {
+interface CodeBlockCardProps {
+  averageCodeBlockCount: BlogAnalytics["result"]["averageCodeBlockCount"];
+}
+
+export default function CodeBlockCard({
+  averageCodeBlockCount,
+}: CodeBlockCardProps) {
   return (
     <StatCard
       className={"relative items-start justify-start"}
       height={"h-[150px]"}
-      label={<Text>평균 코드블럭 수</Text>}
-      title={<Text>n자</Text>}
+      label={<Text>글별 코드블럭 개수</Text>}
+      title={<Text>{`${averageCodeBlockCount}블럭`}</Text>}
       description={
         <Text className={"max-w-[212px] text-gray-400"}>
-          테크블로거들은 평균 4개의 코드블럭을 써요??
+          테크블로거들은 글마다 4개의 코드블럭을 써요
         </Text>
       }
     >
