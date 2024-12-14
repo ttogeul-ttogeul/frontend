@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ReactQueryClientProvider from "@/providers/queryclient-provider";
+import GlobalJotaiProvider from "@/providers/global-jotai-provider";
 
 export const metadata: Metadata = {
   title: "또글또글",
@@ -16,9 +17,11 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <ReactQueryClientProvider>
-          <div className="mx-auto h-dvh w-full max-w-96 overflow-x-hidden border-2 bg-gray-950 px-6">
-            {children}
-          </div>
+          <GlobalJotaiProvider>
+            <div className="mx-auto h-dvh w-full max-w-96 overflow-x-hidden border-2 bg-gray-950 px-6">
+              {children}
+            </div>
+          </GlobalJotaiProvider>
         </ReactQueryClientProvider>
       </body>
     </html>
