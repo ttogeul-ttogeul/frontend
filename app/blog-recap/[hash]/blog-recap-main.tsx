@@ -15,11 +15,10 @@ export default function BlogRecapMain({
 }: {
   initialData: BlogAnalytics;
 }) {
-  console.log(initialData);
   useHydrateAtoms([[blogAnalyticsAtom, initialData]]);
 
   return (
-    <main className={"flex flex-col items-center"}>
+    <main className={"flex flex-col items-center py-8"}>
       <TitleSection />
       <Seperator className={"h-20"} />
       <PersonaSection />
