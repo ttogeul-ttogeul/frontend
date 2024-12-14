@@ -38,7 +38,7 @@ export default function StatCard({
     >
       <CardHeader className={"p-0"}>
         <div className={"text-sm leading-[21px]"}>{label}</div>
-        <CardTitle className={"flex flex-col text-2xl leading-[28.8px]"}>
+        <CardTitle className={"m-0 flex flex-col text-2xl leading-[28.8px]"}>
           {title}
         </CardTitle>
         <CardDescription className={"text-sm leading-[21px] text-gray-400"}>
