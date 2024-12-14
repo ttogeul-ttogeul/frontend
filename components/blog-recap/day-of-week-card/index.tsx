@@ -3,56 +3,58 @@ import StatCard from "@/components/ui/stat-card";
 import Text from "@/components/ui/text";
 import { useMemo } from "react";
 import { DAY_MAPPING } from "./constants";
+import { useAtom } from "jotai";
+import { weekdayDistributionAtom } from "@/components/blog-recap/store/atom";
 
 export default function DayOfWeekCard() {
-  const data = useMemo(
-    () => ({
-      monday: 3,
-      tuesday: 4,
-      wednesday: 5,
-      thursday: 4,
-      friday: 6,
-      saturday: 2,
-      sunday: 1,
-    }),
-    [],
+  const [weekdayDistribution] = useAtom(weekdayDistributionAtom);
+  const maxDay = useMemo(
+    () => Math.max(...Object.values(weekdayDistribution)),
+    [weekdayDistribution],
   );
-  const MAX_DAY = useMemo(() => Math.max(...Object.values(data)), [data]);
   const MAX_HEIGHT = 173;
 
   const mappedData: [string, number][] = useMemo(
-    () => Object.entries(data).map(([key, value]) => [DAY_MAPPING[key], value]),
-    [data],
+    () =>
+      Object.entries(weekdayDistribution).map(([key, value]) => [
+        DAY_MAPPING[key],
+        value,
+      ]),
+    [weekdayDistribution],
   );
+
+  const maxWeekday = useMemo(() => {
+    const maxValue = mappedData.find(([, value]) => value === maxDay);
+    return maxValue?.[0] ?? "";
+  }, [maxDay, mappedData]);
 
   return (
     <StatCard
       title={
         <Text as="h3" className={"text-center font-light"}>
           {"올해 주로 "}
-          <span className={"font-bold"}>몇요일</span>
+          <span className={"font-bold"}>{`${maxWeekday}요일`}</span>
           {"에 글을\n포스팅하셨어요"}
         </Text>
       }
       description={
         <Text className={"text-gray-400"}>
-          테크블로거들은 <span className={"underline"}>주로 몇요일</span>에
-          업로드했어요
+          테크블로거들은 주로 일요일에 발행했어요
         </Text>
       }
     >
       {mappedData.map(([key, value]) => (
         <Bar
-          height={value > 0 ? Math.floor((value * MAX_HEIGHT) / MAX_DAY) : 2}
+          height={value > 0 ? Math.floor((value * MAX_HEIGHT) / maxDay) : 2}
           key={key}
           color={
-            value === MAX_DAY
+            value === maxDay
               ? "bg-gradient-to-r from-violet-600 to-blue-600"
               : "bg-slate-700"
           }
         >
           <Text
-            className={`mb-2 ${value === MAX_DAY ? "text-gray-50" : "text-gray-400"} `}
+            className={`mb-2 ${value === maxDay ? "text-gray-50" : "text-gray-400"} `}
           >
             {key}
           </Text>
