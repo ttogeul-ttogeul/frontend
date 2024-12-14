@@ -30,11 +30,11 @@ export const averageCodeBlockCountAtom = atom(
 );
 
 export const weekdayDistributionAtom = atom(
-  (get) => get(blogAnalytics)?.result.weekdayDistribution ?? undefined,
+  (get) => get(blogAnalytics)?.result.weekdayDistribution ?? {},
 );
 
 export const monthlyDistributionAtom = atom(
-  (get) => get(blogAnalytics)?.result.monthlyDistribution ?? undefined,
+  (get) => get(blogAnalytics)?.result.monthlyDistribution ?? {},
 );
 
 export const quotesAtom = atom(
