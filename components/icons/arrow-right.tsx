@@ -13,7 +13,7 @@ export default function ArrowRight(props: SVGProps<SVGSVGElement>) {
       <path
         d="M3 12H21M21 12L14 5M21 12L14 19"
         stroke="#F9FAFB"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
     </svg>
   );
