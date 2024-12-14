@@ -16,6 +16,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "prbkbowqhvxuzfkgxvxy.supabase.co",
       },
+      {
+        protocol: "https",
+        hostname: "images.velog.io",
+      },
     ],
   },
   webpack(config) {
