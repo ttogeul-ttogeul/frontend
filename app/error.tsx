@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import * as Sentry from "@sentry/nextjs";
 
-export default function GlobalError({
+export default function Error({
   error,
   reset,
 }: {
@@ -13,12 +13,9 @@ export default function GlobalError({
     Sentry.captureException(error);
   }, [error]);
   return (
-    // global-error must include html and body tags
-    <html>
-      <body>
-        <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
-      </body>
-    </html>
+    <div>
+      <h2>아아아ㅏㅇ</h2>
+      <button onClick={() => reset()}>Try again</button>
+    </div>
   );
 }
