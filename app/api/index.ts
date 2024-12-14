@@ -7,9 +7,9 @@ export default class API {
   }
   static post<T, D>(
     url: string,
-    params: T,
+    data: T,
     option?: AxiosRequestConfig,
   ): Promise<D> {
-    return axiosInstance({ url, method: "POST", params, ...option });
+    return axiosInstance({ url, method: "POST", data, ...option });
   }
 }
