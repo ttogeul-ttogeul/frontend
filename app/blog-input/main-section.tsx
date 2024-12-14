@@ -55,13 +55,13 @@ export default function MainSection({
             <Button
               key={blog.id}
               variant={"filled"}
-              className={`${blog.bgColor} text-white`}
+              className={`${blog.bgColor} relative text-white`}
               onClick={() => {
                 setBlogDomain(blog.id);
                 setSelectMode(false);
               }}
             >
-              {logos[blog.id]}
+              <div className="absolute left-6">{logos[blog.id]}</div>
               {blog.name}
             </Button>
           ))}
@@ -76,7 +76,7 @@ export default function MainSection({
             }
           />
           <Button type="submit" disabled={!isDirty || !isValid}>
-            분석하기
+            분석 결과 보기
             <ArrowRight />
           </Button>
         </form>
