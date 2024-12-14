@@ -15,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body className="bg-gray-900">
         <ReactQueryClientProvider>
           <GlobalJotaiProvider>
-            <div className="mx-auto h-dvh w-full max-w-96 overflow-x-hidden border-2 bg-gray-950 px-6">
+            <div className="mx-auto h-dvh w-full max-w-440pxr overflow-x-hidden bg-gray-950 px-6">
               {children}
             </div>
           </GlobalJotaiProvider>
