@@ -11,6 +11,8 @@ export const totalPostCountAtom = atom(
   (get) => get(blogAnalytics)?.result.totalPostCount ?? 0,
 );
 
+export const blogTitleAtom = atom((get) => get(blogAnalytics)?.blogTitle ?? "");
+
 export const averageWordCountAtom = atom(
   (get) => get(blogAnalytics)?.result.averageWordCount ?? 0,
 );
@@ -36,5 +38,10 @@ export const quotesAtom = atom(
 );
 
 export const personaAtom = atom(
-  (get) => get(blogAnalytics)?.result.persona ?? undefined,
+  (get) =>
+    get(blogAnalytics)?.result.persona ?? {
+      category: "",
+      imageUrl: "",
+      title: "",
+    },
 );
