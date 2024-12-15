@@ -6,6 +6,8 @@ import { type BlogDomain } from "@/constants/blogs";
 import NavigationBar from "@/components/blog-input/navigation-bar";
 import { useRouter } from "next/navigation";
 import AnalysisLoading from "@/components/blog-input/analysis-loading";
+import InputSection from "./input-section";
+import SelectSection from "./select-section";
 
 export default function Page() {
   const router = useRouter();
@@ -21,23 +23,19 @@ export default function Page() {
   // if (isLoading) return <AnalysisLoading />;
 
   return (
-    <Suspense fallback={<AnalysisLoading />}>
-      <div className="relative">
-        <NavigationBar onClickHandler={onClickHandler} />
+    <div className="">
+      <NavigationBar onClickHandler={onClickHandler} />
 
-        <div className="flex flex-col gap-20">
-          <TitleSection selectMode={selectMode} blogDomain={blogDomain} />
-
-          <MainSection
-            selectMode={selectMode}
-            setSelectMode={setSelectMode}
-            blogDomain={blogDomain}
-            setBlogDomain={setBlogDomain}
-          />
-        </div>
-
-        <FooterSection selectMode={selectMode} blogDomain={blogDomain} />
-      </div>
-    </Suspense>
+      {selectMode ? (
+        <SelectSection
+          selectMode={selectMode}
+          setSelectMode={setSelectMode}
+          blogDomain={blogDomain}
+          setBlogDomain={setBlogDomain}
+        />
+      ) : (
+        <InputSection blogDomain={blogDomain} />
+      )}
+    </div>
   );
 }
