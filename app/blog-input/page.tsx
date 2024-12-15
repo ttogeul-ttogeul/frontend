@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { TitleSection, MainSection, FooterSection } from ".";
 import { type BlogDomain } from "@/constants/blogs";
 import NavigationBar from "@/components/blog-input/navigation-bar";
 import { useRouter } from "next/navigation";
+import InputSection from "./input-section";
+import SelectSection from "./select-section";
 
 export default function Page() {
   const router = useRouter();
@@ -17,21 +18,19 @@ export default function Page() {
   };
 
   return (
-    <>
+    <div>
       <NavigationBar onClickHandler={onClickHandler} />
 
-      <div className="flex flex-col gap-20">
-        <TitleSection selectMode={selectMode} blogDomain={blogDomain} />
-
-        <MainSection
+      {selectMode ? (
+        <SelectSection
           selectMode={selectMode}
           setSelectMode={setSelectMode}
           blogDomain={blogDomain}
           setBlogDomain={setBlogDomain}
         />
-      </div>
-
-      <FooterSection selectMode={selectMode} blogDomain={blogDomain} />
-    </>
+      ) : (
+        <InputSection blogDomain={blogDomain} />
+      )}
+    </div>
   );
 }
