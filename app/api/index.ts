@@ -10,6 +10,12 @@ export default class API {
     data: T,
     option?: AxiosRequestConfig,
   ): Promise<D> {
-    return axiosInstance({ url, method: "POST", data, ...option });
+    return axiosInstance({
+      url,
+      method: "POST",
+      data,
+      ...option,
+      headers: { "Cache-Control": "no-cache" },
+    });
   }
 }

@@ -22,7 +22,7 @@ export default function StatSection() {
   return (
     <section className={"flex flex-col items-center"}>
       <Text as="h2" className={"text-2xl font-bold"}>
-        수치로 돌아보는 2024년
+        수치로 돌아보는 2024년📈
       </Text>
       <Seperator className={"h-4"} />
       <TotalPostingCard totalPostCount={totalPostCount} />
