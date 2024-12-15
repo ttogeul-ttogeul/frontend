@@ -61,7 +61,7 @@ export default function InputSection({ blogDomain }: SectionProps) {
     defaultValues: { blog_url: "" },
   });
 
-  const { mutate, isPending, status } = useMutation<
+  const { mutate, isPending } = useMutation<
     BlogAnalyticsResponse,
     ApiError,
     analysisFormData
@@ -88,8 +88,6 @@ export default function InputSection({ blogDomain }: SectionProps) {
     // };
 
     mutate(formData);
-
-    console.log("mutation: ", mutate, status);
   };
 
   // if (true) return
@@ -149,8 +147,8 @@ export default function InputSection({ blogDomain }: SectionProps) {
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">
           <AlertDialogTitle className="hidden" />
-          <AlertDialogDescription>
-            {alertMessage || "메시지"}
+          <AlertDialogDescription className="whitespace-pre-line">
+            {alertMessage || "메시지를 길게 써보겠습니다. 이것은 메시지입니다."}
           </AlertDialogDescription>
           <AlertDialogAction
             onClick={() => {
