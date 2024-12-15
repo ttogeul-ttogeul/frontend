@@ -8,14 +8,19 @@ import StatSection from "./stat-section";
 import TitleSection from "./title-section";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 import { blogAnalyticsAtom } from "@/components/blog-recap/store/atom";
-import { useHydrateAtoms } from "jotai/utils";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 
 export default function BlogRecapMain({
   initialData,
 }: {
   initialData: BlogAnalytics;
 }) {
-  useHydrateAtoms([[blogAnalyticsAtom, initialData]]);
+  const [, setBlogAnalytics] = useAtom(blogAnalyticsAtom);
+
+  useEffect(() => {
+    setBlogAnalytics(initialData);
+  }, [initialData, setBlogAnalytics]);
 
   return (
     <main className={"flex flex-col items-center py-8"}>
