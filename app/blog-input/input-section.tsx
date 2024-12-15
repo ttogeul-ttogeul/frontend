@@ -68,7 +68,7 @@ export default function InputSection({ blogDomain }: SectionProps) {
     onError: (err) => {
       // console.log("err: ", err);
       // console.log("errorasdf", error);
-      showAlert(error.message || "서버 에러입니다");
+      showAlert(err.message || "서버 에러입니다");
     },
   });
 
