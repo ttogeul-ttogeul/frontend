@@ -3,6 +3,5 @@ import { fetchBlogAnalytics } from "@/app/api/lib/blog-recap/actions";
 
 export default async function Page({ params }: { params: { hash: string } }) {
   const data = await fetchBlogAnalytics(params.hash);
-  console.log(data);
   return <BlogRecapMain initialData={data} />;
 }
