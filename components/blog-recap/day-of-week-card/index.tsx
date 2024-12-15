@@ -39,7 +39,7 @@ export default function DayOfWeekCard() {
       }
       description={
         <Text className={"text-gray-400"}>
-          테크블로거들은 주로 일요일에 발행했어요
+          테크블로거들은 주로 일요일에 글을 발행했어요
         </Text>
       }
     >
