@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { TitleSection, MainSection, FooterSection } from ".";
 import { type BlogDomain } from "@/constants/blogs";
 import NavigationBar from "@/components/blog-input/navigation-bar";
@@ -21,21 +21,23 @@ export default function Page() {
   // if (isLoading) return <AnalysisLoading />;
 
   return (
-    <div className="relative">
-      <NavigationBar onClickHandler={onClickHandler} />
+    <Suspense fallback={<AnalysisLoading />}>
+      <div className="relative">
+        <NavigationBar onClickHandler={onClickHandler} />
 
-      <div className="flex flex-col gap-20">
-        <TitleSection selectMode={selectMode} blogDomain={blogDomain} />
+        <div className="flex flex-col gap-20">
+          <TitleSection selectMode={selectMode} blogDomain={blogDomain} />
 
-        <MainSection
-          selectMode={selectMode}
-          setSelectMode={setSelectMode}
-          blogDomain={blogDomain}
-          setBlogDomain={setBlogDomain}
-        />
+          <MainSection
+            selectMode={selectMode}
+            setSelectMode={setSelectMode}
+            blogDomain={blogDomain}
+            setBlogDomain={setBlogDomain}
+          />
+        </div>
+
+        <FooterSection selectMode={selectMode} blogDomain={blogDomain} />
       </div>
-
-      <FooterSection selectMode={selectMode} blogDomain={blogDomain} />
-    </div>
+    </Suspense>
   );
 }
