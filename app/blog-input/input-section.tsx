@@ -90,60 +90,50 @@ export default function InputSection({ blogDomain }: SectionProps) {
     mutate(formData);
   };
 
-  // if (true) return
+  if (isPending) return <AnalysisLoading />;
 
   return (
     <Suspense fallback={<AnalysisLoading />}>
-      {isPending ? (
-        <AnalysisLoading />
-      ) : (
-        <div>
-          <div className="mb-20 text-2xl/[1.875rem] font-medium">
-            <Title className="flex flex-col text-2xl/[1.875rem] font-medium">
-              <div>
-                <Title.Highlighted>내 블로그 링크</Title.Highlighted>를
-              </div>
-              <div>입력하세요</div>
-            </Title>
-            {blogDomain === "tistory" && (
-              <p className="mt-3 whitespace-pre text-base font-normal text-gray-400">
-                {
-                  "블로그 스킨이 정교하게 커스텀된 경우,\n분석이 제한될 수 있습니다."
-                }
-              </p>
-            )}
+      <div className="mb-20 text-2xl/[1.875rem] font-medium">
+        <Title className="flex flex-col text-2xl/[1.875rem] font-medium">
+          <div>
+            <Title.Highlighted>내 블로그 링크</Title.Highlighted>를
           </div>
+          <div>입력하세요</div>
+        </Title>
+        {blogDomain === "tistory" && (
+          <p className="mt-3 whitespace-pre text-base font-normal text-gray-400">
+            {
+              "블로그 스킨이 정교하게 커스텀된 경우,\n분석이 제한될 수 있습니다."
+            }
+          </p>
+        )}
+      </div>
 
-          <form
-            className="flex flex-col gap-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <Input
-              placeholder={blog?.urlExample}
-              {...register("blog_url")}
-              className={
-                errors?.blog_url?.message ? "border-2 border-red-600" : ""
-              }
-            />
-            <Button type="submit" disabled={!isDirty || !isValid}>
-              분석 결과 보기
-              <ArrowRight />
-            </Button>
-          </form>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          placeholder={blog?.urlExample}
+          {...register("blog_url")}
+          className={errors?.blog_url?.message ? "border-2 border-red-600" : ""}
+        />
+        <Button type="submit" disabled={!isDirty || !isValid}>
+          분석 결과 보기
+          <ArrowRight />
+        </Button>
+      </form>
 
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform whitespace-pre text-center text-gray-500">
-            <div>주소를 잊어버렸다면?</div>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href={blog?.homeUrl as string}
-              className={`${blog?.textColor} underline`}
-            >
-              {blog?.name} 홈으로{" >"}
-            </Link>
-          </div>
-        </div>
-      )}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform whitespace-pre text-center text-gray-500">
+        <div>주소를 잊어버렸다면?</div>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href={blog?.homeUrl as string}
+          className={`${blog?.textColor} underline`}
+        >
+          {blog?.name} 홈으로{" >"}
+        </Link>
+      </div>
+
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">
           <AlertDialogTitle className="hidden" />
