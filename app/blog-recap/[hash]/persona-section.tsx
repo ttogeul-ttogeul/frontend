@@ -38,9 +38,7 @@ export default function PersonaSection() {
             </Text>
           ) : (
             <Text className="text-center">
-              {
-                "아직 12월 한 발 남았다! 2024년 가기 전에,\n올해 회고글 하나쯤 어떨까요?"
-              }
+              {"2025년에는 꼭 테크블로그의 첫 장을 열어보아요"}
             </Text>
           )}
         </div>
