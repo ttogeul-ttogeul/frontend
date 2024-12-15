@@ -20,6 +20,7 @@ export default function TotalPostingCard({
     () => Math.max(...Object.values(monthlyDistribution)),
     [monthlyDistribution],
   );
+
   const MAX_HEIGHT = 173;
 
   return (

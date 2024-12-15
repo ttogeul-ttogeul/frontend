@@ -12,6 +12,7 @@ export default function DayOfWeekCard() {
     () => Math.max(...Object.values(weekdayDistribution)),
     [weekdayDistribution],
   );
+
   const MAX_HEIGHT = 173;
 
   const mappedData: [string, number][] = useMemo(
@@ -31,11 +32,17 @@ export default function DayOfWeekCard() {
   return (
     <StatCard
       title={
-        <Text as="h3" className={"text-center font-light"}>
-          {"주로 "}
-          <span className={"font-bold"}>{`${maxWeekday}요일`}</span>
-          {"에 글을\n발행했어요"}
-        </Text>
+        maxDay > 0 ? (
+          <Text as="h3" className={"text-center font-light"}>
+            {"주로 "}
+            <span className={"font-bold"}>{`${maxWeekday}요일`}</span>
+            {"에 글을\n발행했어요"}
+          </Text>
+        ) : (
+          <Text as="h3" className="text-center font-light">
+            {"내년에는 무슨 요일에\n글을 쓰실 건가요?😜"}
+          </Text>
+        )
       }
       description={
         <Text className={"text-gray-400"}>
