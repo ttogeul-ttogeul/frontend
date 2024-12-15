@@ -14,7 +14,7 @@ export default function PersonaSection() {
       <Seperator className="h-4" />
       <div
         className={
-          "flex flex-col items-center rounded-lg border border-solid border-gray-700 p-2 font-bold"
+          "flex flex-col items-center rounded-2xl border border-solid border-gray-700 p-2 font-bold"
         }
       >
         <div className={"flex h-12 w-full items-center justify-center"}>
@@ -34,7 +34,7 @@ export default function PersonaSection() {
           {persona.category ? (
             <Text>
               <span className={"font-bold"}>{persona.category}</span>
-              {` 글을 가장 많이 작성하셨어요`}
+              <span className="font-medium">{` 글을 가장 많이 작성하셨어요`}</span>
             </Text>
           ) : (
             <Text className="text-center">
