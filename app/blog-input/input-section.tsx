@@ -71,7 +71,6 @@ export default function InputSection({ blogDomain }: SectionProps) {
       return res as BlogAnalyticsResponse;
     },
     onSuccess: (res) => {
-      console.log("onsuccess!!!!", res);
       router.push(`/blog-recap/${res.blogAnalyticsId}`);
     },
     onError: (err) => {
@@ -87,58 +86,69 @@ export default function InputSection({ blogDomain }: SectionProps) {
     //   blog_url: "https://daco2020.tistory.com/",
     //   blog_domain: "tistory",
     // };
-    console.log("formData: ", formData);
 
     mutate(formData);
   };
 
-  if (isPending) return <AnalysisLoading />;
+  // if (true) return
 
   return (
     <Suspense fallback={<AnalysisLoading />}>
-      <div className="mb-20 text-2xl/[1.875rem] font-medium">
-        <Title className="flex flex-col text-2xl/[1.875rem] font-medium">
-          <div>
-            <Title.Highlighted>내 블로그 링크</Title.Highlighted>를
+      {isPending ? (
+        <AnalysisLoading />
+      ) : (
+        <div>
+          <div className="mb-20 text-2xl/[1.875rem] font-medium">
+            <Title className="flex flex-col text-2xl/[1.875rem] font-medium">
+              <div>
+                <Title.Highlighted>내 블로그 링크</Title.Highlighted>를
+              </div>
+              <div>입력하세요</div>
+            </Title>
+            {blogDomain === "tistory" && (
+              <p className="mt-3 whitespace-pre text-base font-normal text-gray-400">
+                {
+                  "블로그 스킨이 정교하게 커스텀된 경우,\n분석이 제한될 수 있습니다."
+                }
+              </p>
+            )}
           </div>
-          <div>입력하세요</div>
-        </Title>
-        {blogDomain === "tistory" && (
-          <p className="mt-3 whitespace-pre text-base font-normal text-gray-400">
-            {
-              "블로그 스킨이 정교하게 커스텀된 경우,\n분석이 제한될 수 있습니다."
-            }
-          </p>
-        )}
-      </div>
 
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          placeholder={blog?.urlExample}
-          {...register("blog_url")}
-          className={errors?.blog_url?.message ? "border-2 border-red-600" : ""}
-        />
-        <Button type="submit" disabled={!isDirty || !isValid}>
-          분석 결과 보기
-          <ArrowRight />
-        </Button>
-      </form>
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <Input
+              placeholder={blog?.urlExample}
+              {...register("blog_url")}
+              className={
+                errors?.blog_url?.message ? "border-2 border-red-600" : ""
+              }
+            />
+            <Button type="submit" disabled={!isDirty || !isValid}>
+              분석 결과 보기
+              <ArrowRight />
+            </Button>
+          </form>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform whitespace-pre text-center text-gray-500">
-        <div>주소를 잊어버렸다면?</div>
-        <Link
-          href={blog?.homeUrl as string}
-          className={`${blog?.textColor} underline`}
-        >
-          {blog?.name} 홈으로{" >"}
-        </Link>
-      </div>
-
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform whitespace-pre text-center text-gray-500">
+            <div>주소를 잊어버렸다면?</div>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href={blog?.homeUrl as string}
+              className={`${blog?.textColor} underline`}
+            >
+              {blog?.name} 홈으로{" >"}
+            </Link>
+          </div>
+        </div>
+      )}
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">
           <AlertDialogTitle className="hidden" />
-          <AlertDialogDescription>
-            {alertMessage || "메시지"}
+          <AlertDialogDescription className="whitespace-pre-line">
+            {alertMessage || "메시지를 길게 써보겠습니다. 이것은 메시지입니다."}
           </AlertDialogDescription>
           <AlertDialogAction
             onClick={() => {
