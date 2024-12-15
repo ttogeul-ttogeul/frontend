@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, Suspense, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BLOGS, BlogType, type BlogDomain } from "@/constants/blogs";
 import { useForm } from "react-hook-form";
@@ -20,6 +20,8 @@ import { postAnalysis } from "../api/lib/actions";
 import { BASE_URL } from "../api/constants";
 import AnalysisLoading from "@/components/blog-input/analysis-loading";
 import { useRouter } from "next/navigation";
+import API from "../api";
+import { analysisFormData } from "../api/lib/types";
 
 const schema = object({
   blog_url: string().min(1),
@@ -62,16 +64,19 @@ export default function MainSection({
   const router = useRouter();
 
   const { mutate, isPending, isSuccess, error } = useMutation({
-    mutationFn: postAnalysis,
+    mutationFn: async (data: analysisFormData) => {
+      const res = await API.post("/v1/blog-analytics", data);
+      return res;
+    },
     onSuccess: (res) => {
       console.log("onsuccess!!!!", res);
 
       router.push(`/blog-recap/${res.blogAnalyticsId}`);
     },
     onError: (err) => {
-      console.log("err: ", err);
+      console.log("err: ", err.message);
       console.log("errorasdf", error);
-      showAlert(error.message || "서버 에러입니다");
+      showAlert(err.message || "서버 에러입니다");
     },
   });
 
@@ -119,7 +124,7 @@ export default function MainSection({
     velog: <VelogLogo width={24} height={24} />,
   };
 
-  if (isPending) return <AnalysisLoading />;
+  // if (isPending) return <AnalysisLoading />;
 
   return (
     <>
