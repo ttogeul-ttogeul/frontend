@@ -9,7 +9,6 @@ export const fetchRoot = async () => {
 };
 
 export const postAnalysis = async (data: analysisFormData) => {
-  console.log("post-data: ", data);
   try {
     const response = await API.post(`/v1/blog-analytics`, data);
     console.log("postaction-response: ", response);
