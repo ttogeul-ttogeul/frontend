@@ -1,7 +1,6 @@
 "use client";
 
 import Title from "@/components/home/highlighted-title";
-// import { SectionProps } from "./type";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ArrowRight from "@/components/icons/svgs/arrow-right.svg";
@@ -12,7 +11,7 @@ import { type BlogDomain, BLOGS } from "@/constants/blogs";
 import API from "../api";
 import { analysisFormData } from "../api/lib/types";
 import { useMutation } from "@tanstack/react-query";
-import { Dispatch, SetStateAction, Suspense, useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -32,6 +31,12 @@ type FormValues = z.infer<typeof schema>;
 
 type SectionProps = {
   blogDomain: BlogDomain;
+};
+
+type BlogAnalyticsResponse = { blogAnalyticsId: string };
+
+type ApiError = {
+  message: string;
 };
 
 export default function InputSection({ blogDomain }: SectionProps) {
@@ -56,10 +61,14 @@ export default function InputSection({ blogDomain }: SectionProps) {
     defaultValues: { blog_url: "" },
   });
 
-  const { mutate, isPending, isSuccess, error } = useMutation({
+  const { mutate, isPending } = useMutation<
+    BlogAnalyticsResponse,
+    ApiError,
+    analysisFormData
+  >({
     mutationFn: async (data: analysisFormData) => {
       const res = await API.post("/v1/blog-analytics", data);
-      return res;
+      return res as BlogAnalyticsResponse;
     },
     onSuccess: (res) => {
       console.log("onsuccess!!!!", res);
@@ -82,6 +91,8 @@ export default function InputSection({ blogDomain }: SectionProps) {
 
     mutate(formData);
   };
+
+  if (isPending) return <AnalysisLoading />;
 
   return (
     <Suspense fallback={<AnalysisLoading />}>
