@@ -1,18 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 import type { Config } from "tailwindcss";
 
+type PxrObject = {
+  [key: `${number}pxr`]: string;
+};
+
+const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+
 const config: Config = {
   darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./constants/**/*.{js,ts,jsx,tsx,mdx}",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        suit: "SUIT",
+        ridibatang: "RIDIBatang",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -59,6 +70,29 @@ const config: Config = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        blog: {
+          naver: "#00C73C",
+          tistory: "#EB531F",
+          velog: "#20C997",
+        },
+      },
+      fontSize: {
+        ...Array.from({ length: 100 }, (_, index) => index + 1).reduce(
+          (acc, cur) => {
+            acc[`${cur}pxr`] = pxToRem(cur);
+            return acc;
+          },
+          {} as PxrObject,
+        ),
+      },
+      spacing: {
+        ...Array.from({ length: 1920 }, (_, index) => index + 1).reduce(
+          (acc, cur) => {
+            acc[`${cur}pxr`] = pxToRem(cur);
+            return acc;
+          },
+          {} as PxrObject,
+        ),
       },
     },
   },
