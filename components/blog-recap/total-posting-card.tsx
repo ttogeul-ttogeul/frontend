@@ -20,16 +20,21 @@ export default function TotalPostingCard({
     () => Math.max(...Object.values(monthlyDistribution)),
     [monthlyDistribution],
   );
+
   const MAX_HEIGHT = 173;
 
   return (
     <StatCard
       title={
-        <Text as="h3" className={"text-center font-light"}>
-          {"올해 총 "}
-          <span className={"font-bold"}>{`${totalPostCount}개`}</span>
-          {"의\n글을 썼어요"}
-        </Text>
+        totalPostCount > 0 ? (
+          <Text as="h3" className={"text-center font-light"}>
+            {"올해 총 "}
+            <span className={"font-bold"}>{`${totalPostCount}개`}</span>
+            {"의\n글을 썼어요"}
+          </Text>
+        ) : (
+          <Text as="h3">올해 글을 쓰지 않으셨군요</Text>
+        )
       }
       description={
         <Text className={"text-gray-400"}>
