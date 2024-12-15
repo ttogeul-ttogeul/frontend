@@ -43,7 +43,7 @@ export default function LoadingText() {
       setCurrentMessageIdx(
         (prevIdx) => (prevIdx + 1) % combinedMessages.length,
       );
-    }, 3000);
+    }, 1800);
 
     return () => clearInterval(intervalId);
   }, [combinedMessages]);
