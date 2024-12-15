@@ -13,8 +13,8 @@ export default function Error({
     Sentry.captureException(error);
   }, [error]);
   return (
-    <div>
-      <h2>아아아ㅏㅇ</h2>
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <h2 className="text-2xl">Something went wrong</h2>
       <button onClick={() => reset()}>Try again</button>
     </div>
   );
