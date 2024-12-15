@@ -128,7 +128,13 @@ export default function QuoteCarousel() {
                 <Text className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-gray-400">
                   {blogTitle}
                 </Text>
-                <Text className="text-gray-400">{` -`}</Text>
+              </div>
+              <div className="flex items-start justify-center text-sm">
+                <Text>{"<"}</Text>
+                <Text className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-gray-400">
+                  버그가 아니라 기능입니다
+                </Text>
+                <Text className="text-gray-400">{`> -`}</Text>
               </div>
             </div>
           </CardContent>

@@ -9,12 +9,12 @@ export default function PersonaSection() {
   return (
     <section className={"flex w-full flex-col items-center"}>
       <Text as="h2" className={"text-2xl font-bold"}>
-        2024년, 이 블로그는
+        2024년, 이 블로그는👀
       </Text>
       <Seperator className="h-4" />
       <div
         className={
-          "flex flex-col items-center rounded-lg border border-solid border-gray-700 p-2 font-bold"
+          "flex flex-col items-center rounded-2xl border border-solid border-gray-700 p-2 font-bold"
         }
       >
         <div className={"flex h-12 w-full items-center justify-center"}>
@@ -34,13 +34,11 @@ export default function PersonaSection() {
           {persona.category ? (
             <Text>
               <span className={"font-bold"}>{persona.category}</span>
-              {` 글을 가장 많이 작성하셨어요`}
+              <span className="font-medium">{` 글을 가장 많이 작성하셨어요`}</span>
             </Text>
           ) : (
             <Text className="text-center">
-              {
-                "아직 12월 한 발 남았다! 2024년 가기 전에,\n올해 회고글 하나쯤 어떨까요?"
-              }
+              {"2025년에는 꼭 테크블로그의 첫 장을 열어보아요"}
             </Text>
           )}
         </div>

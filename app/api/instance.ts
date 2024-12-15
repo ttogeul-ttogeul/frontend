@@ -12,12 +12,10 @@ export const axiosInstance = axios.create({
 // 요청 인터셉터
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log("req-interceptor-config: ", config);
     // 요청 전 로직 추가 가능
     return config;
   },
   (error) => {
-    console.log("req-interceptor-error: ", error);
     return Promise.reject(error);
   },
 );
@@ -25,11 +23,9 @@ axiosInstance.interceptors.request.use(
 // 응답 인터셉터
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log("interceptor-response: ", response);
     return response.data;
   },
   (error) => {
-    console.log("interceptor-error: ", error);
     if (axios.isAxiosError(error)) {
       Sentry.captureException(`API error: ${error.message}`);
       return Promise.reject({
