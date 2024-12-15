@@ -23,7 +23,6 @@ export default function Page() {
 
       {selectMode ? (
         <SelectSection
-          selectMode={selectMode}
           setSelectMode={setSelectMode}
           blogDomain={blogDomain}
           setBlogDomain={setBlogDomain}

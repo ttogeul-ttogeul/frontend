@@ -3,18 +3,12 @@ import { Button } from "@/components/ui/button";
 import { BLOGS, type BlogType } from "@/constants/blogs";
 import TistoryLogo from "@/components/icons/svgs/logo-tistory.svg";
 import VelogLogo from "@/components/icons/svgs/logo-velog.svg";
-import ArrowRight from "@/components/icons/svgs/arrow-right.svg";
 import { SectionProps } from "./type";
-import Link from "next/link";
 
 export default function SelectSection({
-  selectMode,
   setSelectMode,
-  blogDomain,
   setBlogDomain,
 }: SectionProps) {
-  const blog = BLOGS.find((blog) => blog.id === blogDomain);
-
   const logos = {
     tistory: <TistoryLogo width={24} height={24} />,
     velog: <VelogLogo width={24} height={24} />,
