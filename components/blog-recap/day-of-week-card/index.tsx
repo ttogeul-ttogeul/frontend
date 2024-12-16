@@ -40,7 +40,7 @@ export default function DayOfWeekCard() {
           </Text>
         ) : (
           <Text as="h3" className="text-center font-light">
-            {"내년에는 무슨 요일에\n글을 쓰실 건가요?😜"}
+            {"내년에는 무슨 요일에\n글을 쓰실 건가요?"}
           </Text>
         )
       }
