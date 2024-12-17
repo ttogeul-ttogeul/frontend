@@ -121,7 +121,7 @@ export default function QuoteCarousel() {
                   "mb-2 break-keep text-center font-ridibatang text-lg"
                 }
               >
-                {'"null"'}
+                {'"404 Not Found"'}
               </Text>
               <div className="flex items-start justify-center text-sm">
                 <Text className="text-gray-400">{`- `}</Text>
@@ -130,9 +130,9 @@ export default function QuoteCarousel() {
                 </Text>
               </div>
               <div className="flex items-start justify-center text-sm">
-                <Text>{"<"}</Text>
+                <Text className="text-gray-400">{"<"}</Text>
                 <Text className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-gray-400">
-                  버그가 아니라 기능입니다
+                  올해 글을 안 쓰셨군요...
                 </Text>
                 <Text className="text-gray-400">{`> -`}</Text>
               </div>
