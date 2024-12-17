@@ -11,7 +11,7 @@ import { BLOGS } from "@/constants/blogs";
 import API from "../api";
 import { analysisFormData } from "../api/lib/types";
 import { useMutation } from "@tanstack/react-query";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -60,7 +60,7 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
     defaultValues: { blog_url: "" },
   });
 
-  const { mutate, isPending } = useMutation<
+  const { mutate, isPending, isSuccess } = useMutation<
     BlogAnalyticsResponse,
     ApiError,
     analysisFormData
@@ -73,6 +73,7 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
       router.push(`/blog-recap/${res.blogAnalyticsId}`);
     },
     onError: (err) => {
+      console.log(err);
       showAlert(err.message || "서버 에러입니다");
     },
   });
@@ -83,10 +84,11 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
     mutate(formData);
   };
 
-  if (isPending) return <AnalysisLoading />;
+  // mutation이 종료된 후에도 로딩창을 유지한 뒤 /blog-recap 페이지로 이동
+  if (isPending || isSuccess) return <AnalysisLoading />;
 
   return (
-    <Suspense fallback={<AnalysisLoading />}>
+    <>
       <div>
         <TitleSection>
           <Title className="flex flex-col text-2xl/[1.875rem] font-medium">
@@ -147,6 +149,6 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
           </AlertDialogAction>
         </AlertDialogContent>
       </AlertDialog>
-    </Suspense>
+    </>
   );
 }
