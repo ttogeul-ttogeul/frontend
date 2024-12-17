@@ -5,8 +5,13 @@ import { useAtom } from "jotai";
 export default function TitleSection() {
   const [blogTitle] = useAtom(blogTitleAtom);
   return (
-    <Text className={"text-3xl font-bold"} as="h1">
-      {blogTitle}
-    </Text>
+    <div className="flex w-full justify-center">
+      <Text
+        className={"whitespace-normal break-normal text-3xl font-bold"}
+        as="h1"
+      >
+        {blogTitle}
+      </Text>
+    </div>
   );
 }
