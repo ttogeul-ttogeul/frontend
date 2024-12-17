@@ -1,14 +1,22 @@
 "use server";
 
 import API from "@/app/api";
-import { analysisFormData, RootResponse } from "./types";
+import { AnalysisFormData, RootResponse, TotalPostCount } from "./types";
 
 export const fetchRoot = async () => {
   const { message } = await API.get<RootResponse>("/");
   return message;
 };
 
-export const postAnalysis = async (data: analysisFormData) => {
+export const fetchTotalPostCount = async () => {
+  const response = await API.get<TotalPostCount>(
+    `/v1/blog-analytics/total-post-count`,
+  );
+
+  return response;
+};
+
+export const postAnalysis = async (data: AnalysisFormData) => {
   try {
     const response = await API.post(`/v1/blog-analytics`, data);
     console.log("postaction-response: ", response);
@@ -17,7 +25,3 @@ export const postAnalysis = async (data: analysisFormData) => {
     throw error;
   }
 };
-
-// export const test = async (data: analysisFormData) => {
-
-// }
