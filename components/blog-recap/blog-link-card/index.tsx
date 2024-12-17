@@ -30,7 +30,12 @@ export default function BlogLinkCard() {
           height={64}
         />
         <div className="flex-1">
-          <Text as="h3">{blogTitle}</Text>
+          <Text
+            as="h3"
+            className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap break-normal"
+          >
+            {blogTitle}
+          </Text>
           <Text className="text-xs text-gray-500">{removedProtocolUrl}</Text>
         </div>
         <div className="w-[20px]">{">"}</div>
