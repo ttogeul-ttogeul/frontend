@@ -55,7 +55,9 @@ export default function TotalPostingCard({
                 ? "bg-gradient-to-b from-violet-600 to-blue-600"
                 : "bg-slate-700"
             }
-          />
+          >
+            <Text className="mb-2 text-xs leading-3">{idx + 1}</Text>
+          </Bar>
         ))}
       </>
     </StatCard>
