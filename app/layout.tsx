@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "2024 테블리 | 테크블로그 리포트",
   description: "테블리에서 24년 내 블로그 리포트 받아가세요😉",
   openGraph: {
-    images: "/images/og-main.png",
+    images: "/images/OG_Image.png",
   },
 };
 
