@@ -9,6 +9,7 @@ import TitleSection from "./title-section";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 import { blogAnalyticsAtom } from "@/components/blog-recap/store/atom";
 import { useHydrateAtoms } from "jotai/utils";
+import VisitBlogSection from "./visit-blog-section";
 
 export default function BlogRecapMain({
   initialData,
@@ -28,6 +29,8 @@ export default function BlogRecapMain({
       <QuoteSection />
       <Seperator className={"h-20"} />
       <StatSection />
+      <Seperator className={"h-20"} />
+      <VisitBlogSection />
       <Seperator className={"h-20"} />
       <FooterSection />
     </main>
