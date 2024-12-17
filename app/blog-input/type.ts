@@ -1,8 +1,13 @@
 import { type BlogDomain } from "@/constants/blogs";
 import { Dispatch, SetStateAction } from "react";
 
-export type SectionProps = {
-  setSelectMode: Dispatch<SetStateAction<boolean>>;
+export type BlogInputModeProps = {
   blogDomain: BlogDomain;
-  setBlogDomain: Dispatch<SetStateAction<BlogDomain>>;
 };
+
+export type BlogSelectModeProps = {
+  setBlogDomain: Dispatch<SetStateAction<BlogDomain>>;
+  setSelectMode: Dispatch<SetStateAction<boolean>>;
+};
+
+export type BlogAnalyticsResponse = { blogAnalyticsId: string };

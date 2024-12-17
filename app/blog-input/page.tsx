@@ -4,8 +4,8 @@ import { useState } from "react";
 import { type BlogDomain } from "@/constants/blogs";
 import NavigationBar from "@/components/blog-input/navigation-bar";
 import { useRouter } from "next/navigation";
-import InputSection from "./input-section";
-import SelectSection from "./select-section";
+import BlogInputMode from "./blog-input-mode";
+import BlogSelectMode from "./blog-select-mode";
 
 export default function Page() {
   const router = useRouter();
@@ -18,18 +18,19 @@ export default function Page() {
   };
 
   return (
-    <div>
+    <>
       <NavigationBar onClickHandler={onClickHandler} />
 
-      {selectMode ? (
-        <SelectSection
-          setSelectMode={setSelectMode}
-          blogDomain={blogDomain}
-          setBlogDomain={setBlogDomain}
-        />
-      ) : (
-        <InputSection blogDomain={blogDomain} />
-      )}
-    </div>
+      <div className="flex h-[calc(100dvh-5.25rem)] flex-col justify-between pb-12">
+        {selectMode ? (
+          <BlogSelectMode
+            setBlogDomain={setBlogDomain}
+            setSelectMode={setSelectMode}
+          />
+        ) : (
+          <BlogInputMode blogDomain={blogDomain} />
+        )}
+      </div>
+    </>
   );
 }
