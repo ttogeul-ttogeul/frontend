@@ -45,7 +45,7 @@ export default function FooterSection() {
         variant={"filled"}
         className={"w-full"}
       >
-        홈으로
+        다른 블로그 분석하기
       </Button>
     </>
   );
