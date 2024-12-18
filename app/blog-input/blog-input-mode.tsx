@@ -9,7 +9,7 @@ import { object, string, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BLOGS } from "@/constants/blogs";
 import API from "../api";
-import { analysisFormData } from "../api/lib/types";
+import { AnalysisFormData } from "../api/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import Link from "next/link";
@@ -63,9 +63,9 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
   const { mutate, isPending, isSuccess } = useMutation<
     BlogAnalyticsResponse,
     ApiError,
-    analysisFormData
+    AnalysisFormData
   >({
-    mutationFn: async (data: analysisFormData) => {
+    mutationFn: async (data: AnalysisFormData) => {
       const res = await API.post("/v1/blog-analytics", data);
       return res as BlogAnalyticsResponse;
     },
