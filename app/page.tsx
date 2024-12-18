@@ -9,7 +9,7 @@ export default async function Home() {
   const { totalPostCount } = await fetchTotalPostCount();
 
   return (
-    <main className="mt-100pxr">
+    <main className="mt-100pxr px-6">
       <div className="mb-10">
         <div className="text-2xl/[30px] font-medium">2024</div>
         <Title className="mt-4 flex flex-col">
