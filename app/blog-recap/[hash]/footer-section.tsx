@@ -35,7 +35,7 @@ export default function FooterSection() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-[312px]">
       <Button onClick={handleCopy} className="w-full">
         결과 공유하기
       </Button>

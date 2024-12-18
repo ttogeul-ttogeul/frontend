@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ReactQueryClientProvider from "@/providers/queryclient-provider";
 import GlobalJotaiProvider from "@/providers/global-jotai-provider";
+import GoogleAnalytics from "@/components/GooglyAnalytics";
 
 export const metadata: Metadata = {
   title: "2024 테블리 | 테크블로그 리포트",
@@ -19,6 +20,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-gray-900">
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <GoogleAnalytics />
+        ) : (
+          <div>GA환경변수값필요</div>
+        )}
         <ReactQueryClientProvider>
           <GlobalJotaiProvider>
             <div className="no-scrollbar mx-auto h-dvh w-full max-w-440pxr overflow-x-hidden bg-gray-950 px-6">

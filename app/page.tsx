@@ -3,6 +3,7 @@ import ArrowRight from "@/components/icons/arrow-right";
 import Link from "next/link";
 import Title from "@/components/home/highlighted-title";
 import { fetchTotalPostCount } from "./api/lib/actions";
+import KakaoAdfit from "@/components/shared/kakao-adfit";
 
 export default async function Home() {
   const { totalPostCount } = await fetchTotalPostCount();
@@ -23,7 +24,7 @@ export default async function Home() {
           </div>
         </Title>
 
-        <div className="mt-4 text-base/5">
+        <div className="mt-4 text-base/5 text-gray-400">
           지금까지 <span className="font-bold">{totalPostCount}</span>건의 글을
           분석했어요!
         </div>
@@ -34,6 +35,7 @@ export default async function Home() {
           <ArrowRight />
         </Button>
       </Link>
+      <KakaoAdfit adUnit="DAN-uBhuPeUmZcdr66qz" />
     </main>
   );
 }
