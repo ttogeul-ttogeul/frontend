@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as Sentry from "@sentry/nextjs";
+import { notFound } from "next/navigation";
 
 export const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL, // 환경 변수에서 API URL을 가져옴
@@ -27,6 +28,10 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (axios.isAxiosError(error)) {
+      if (error.status === 404) {
+        notFound();
+      }
+
       Sentry.captureException(`API error: ${error.message}`);
       return Promise.reject({
         status: error.response?.status,

@@ -50,7 +50,7 @@ export default function QuoteCarousel() {
                         alt="sample"
                         width={300}
                         height={400}
-                        className={"h-full rounded-2xl object-cover opacity-60"}
+                        className={"h-full rounded-2xl object-cover"}
                         priority
                       />
                       <div

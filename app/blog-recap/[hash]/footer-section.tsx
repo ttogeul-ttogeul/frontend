@@ -35,7 +35,7 @@ export default function FooterSection() {
   };
 
   return (
-    <>
+    <div className="w-full">
       <Button onClick={handleCopy} className="w-full">
         결과 공유하기
       </Button>
@@ -47,6 +47,6 @@ export default function FooterSection() {
       >
         다른 블로그 분석하기
       </Button>
-    </>
+    </div>
   );
 }

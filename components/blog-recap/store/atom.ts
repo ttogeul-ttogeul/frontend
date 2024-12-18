@@ -17,6 +17,8 @@ export const blogImageUrlAtom = atom(
   (get) => get(blogAnalytics)?.blogImageUrl ?? "",
 );
 
+export const blogUrlAtom = atom((get) => get(blogAnalytics)?.blogUrl ?? "");
+
 export const averageWordCountAtom = atom(
   (get) => get(blogAnalytics)?.result.averageWordCount ?? 0,
 );

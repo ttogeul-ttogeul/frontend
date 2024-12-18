@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import ArrowRight from "@/components/icons/arrow-right";
 import Link from "next/link";
 import Title from "@/components/home/highlighted-title";
+import { fetchTotalPostCount } from "./api/lib/actions";
 
-export default function Home() {
+export default async function Home() {
+  const { totalPostCount } = await fetchTotalPostCount();
+
   return (
     <main className="mt-100pxr">
       <div className="mb-10">
@@ -19,6 +22,11 @@ export default function Home() {
             <Title.Highlighted>리</Title.Highlighted>포트
           </div>
         </Title>
+
+        <div className="mt-4 text-base/5">
+          지금까지 <span className="font-bold">{totalPostCount}</span>건의 글을
+          분석했어요!
+        </div>
       </div>
       <Link href="/blog-input">
         <Button>
