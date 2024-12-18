@@ -23,7 +23,7 @@ export default function BlogLinkCard() {
     >
       <div className="flex items-center gap-3 rounded-2xl border border-gray-700">
         <Image
-          className="rounded-l-2xl"
+          className="aspect-square rounded-l-2xl object-cover"
           src={blogImageUrl}
           alt="blog-image"
           width={64}
