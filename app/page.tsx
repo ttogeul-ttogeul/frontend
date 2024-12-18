@@ -23,7 +23,7 @@ export default async function Home() {
           </div>
         </Title>
 
-        <div className="mt-4 text-base/5">
+        <div className="mt-4 text-base/5 text-gray-400">
           지금까지 <span className="font-bold">{totalPostCount}</span>건의 글을
           분석했어요!
         </div>
