@@ -5,6 +5,7 @@ import TistoryLogo from "@/components/icons/svgs/logo-tistory.svg";
 import VelogLogo from "@/components/icons/svgs/logo-velog.svg";
 import { type BlogSelectModeProps } from "./type";
 import { FooterSection, TitleSection } from "@/components/blog-input";
+import KakaoAdfit from "@/components/shared/kakao-adfit";
 
 export default function BlogSelectMode({
   setSelectMode,
@@ -50,6 +51,8 @@ export default function BlogSelectMode({
           {"더 다양한 서비스를 지원할 수 있도록\n준비 중입니다."}
         </div>
       </FooterSection>
+
+      <KakaoAdfit adUnit="DAN-BzP9NBV4dkR6CLsR" />
     </>
   );
 }

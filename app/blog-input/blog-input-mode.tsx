@@ -27,6 +27,7 @@ import {
   AnalysisLoading,
   FooterSection,
 } from "@/components/blog-input";
+import KakaoAdfit from "@/components/shared/kakao-adfit";
 
 const schema = object({
   blog_url: string().min(1),
@@ -132,6 +133,8 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
           {blog?.name} 홈으로{" >"}
         </Link>
       </FooterSection>
+
+      <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" />
 
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">
