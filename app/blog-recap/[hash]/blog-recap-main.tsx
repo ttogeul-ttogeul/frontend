@@ -10,6 +10,7 @@ import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 import { blogAnalyticsAtom } from "@/components/blog-recap/store/atom";
 import { useHydrateAtoms } from "jotai/utils";
 import VisitBlogSection from "./visit-blog-section";
+import KakaoAdfit from "@/components/shared/kakao-adfit";
 
 export default function BlogRecapMain({
   initialData,
@@ -21,7 +22,7 @@ export default function BlogRecapMain({
   });
 
   return (
-    <main className={"flex flex-col items-center py-8"}>
+    <main className={"relative flex flex-col items-center py-8 pb-[80px]"}>
       <TitleSection />
       <Seperator className={"h-20"} />
       <PersonaSection />
@@ -33,6 +34,8 @@ export default function BlogRecapMain({
       <VisitBlogSection />
       <Seperator className={"h-20"} />
       <FooterSection />
+      <Seperator className={"h-12"} />
+      <KakaoAdfit adUnit="DAN-Ii1fxGn0kfNlq63k" />
     </main>
   );
 }
