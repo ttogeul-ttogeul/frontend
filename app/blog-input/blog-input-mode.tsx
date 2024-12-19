@@ -74,20 +74,16 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
       router.push(`/blog-recap/${res.blogAnalyticsId}`);
     },
     onError: (err) => {
-      console.log(err);
-      showAlert(err.message || "서버 에러입니다");
+      if (err.message === "Network Error") {
+        showAlert(`인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`);
+      } else {
+        showAlert(err.message || "서버 에러입니다");
+      }
     },
   });
 
-  const normalizeHttps = (url: string): string => {
-    return url.replace(/^HTTPS:/i, "https:");
-  };
-
   const onSubmit = async (data: FormValues) => {
-    const formData = {
-      blog_url: normalizeHttps(data.blog_url),
-      blog_domain: blogDomain,
-    };
+    const formData = { ...data, blog_domain: blogDomain };
 
     mutate(formData);
   };
@@ -139,8 +135,9 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
         >
           {blog?.name} 홈으로{" >"}
         </Link>
-        <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" className="mt-12" />
       </FooterSection>
+
+      <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" />
 
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">
