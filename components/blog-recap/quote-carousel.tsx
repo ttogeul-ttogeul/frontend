@@ -12,8 +12,9 @@ import { useState } from "react";
 import Text from "@/components/ui/text";
 import { useAtom } from "jotai";
 import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
+import React from "react";
 
-export default function QuoteCarousel() {
+const QuoteCarousel = () => {
   const [blogTitle] = useAtom(blogTitleAtom);
   const [quotes] = useAtom(quotesAtom);
   const [blogImageUrl] = useAtom(blogImageUrlAtom);
@@ -142,4 +143,6 @@ export default function QuoteCarousel() {
       )}
     </>
   );
-}
+};
+
+export default React.memo(QuoteCarousel);
