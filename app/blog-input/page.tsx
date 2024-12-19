@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <NavigationBar onClickHandler={onClickHandler} />
 
-      <div className="flex h-[calc(100dvh-5.25rem)] flex-col justify-between">
+      <div className="flex h-[calc(100dvh-8.25rem)] flex-col justify-between pb-12">
         {selectMode ? (
           <>
             <BlogSelectMode

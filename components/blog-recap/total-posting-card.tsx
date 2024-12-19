@@ -21,7 +21,7 @@ export default function TotalPostingCard({
     [monthlyDistribution],
   );
 
-  const MAX_HEIGHT = 145;
+  const MAX_HEIGHT = 173;
 
   return (
     <StatCard
@@ -44,20 +44,20 @@ export default function TotalPostingCard({
     >
       <>
         {Object.entries(monthlyDistribution).map(([key, value], idx) => (
-          <div key={key} className="flex flex-1 flex-col items-center">
-            <Bar
-              className={"rounded"}
-              height={
-                value > 0 ? Math.floor((MAX_HEIGHT * value) / MAX_VALUE) : 2
-              }
-              color={
-                value > 0
-                  ? "bg-gradient-to-b from-violet-600 to-blue-600"
-                  : "bg-slate-700"
-              }
-            />
-            <Text className="mt-[7px] text-xs leading-3">{idx + 1}</Text>
-          </div>
+          <Bar
+            key={`${key}-${idx}`}
+            className={"rounded"}
+            height={
+              value > 0 ? Math.floor((MAX_HEIGHT * value) / MAX_VALUE) : 2
+            }
+            color={
+              value > 0
+                ? "bg-gradient-to-b from-violet-600 to-blue-600"
+                : "bg-slate-700"
+            }
+          >
+            <Text className="mb-2 text-xs leading-3">{idx + 1}</Text>
+          </Bar>
         ))}
       </>
     </StatCard>
