@@ -27,6 +27,7 @@ export default function BlogRecapMain({
       className={"relative flex w-full flex-col items-center py-8 pb-[80px]"}
     >
       <Image
+        priority
         src="/images/top-banner@3x.png"
         alt="banner"
         width={880} // 원본 이미지 너비
