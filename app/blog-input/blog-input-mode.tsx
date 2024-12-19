@@ -74,8 +74,11 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
       router.push(`/blog-recap/${res.blogAnalyticsId}`);
     },
     onError: (err) => {
-      console.log(err);
-      showAlert(err.message || "서버 에러입니다");
+      if (err.message === "Network Error") {
+        showAlert(`인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`);
+      } else {
+        showAlert(err.message || "서버 에러입니다");
+      }
     },
   });
 
