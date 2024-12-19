@@ -11,7 +11,6 @@ import { blogAnalyticsAtom } from "@/components/blog-recap/store/atom";
 import { useHydrateAtoms } from "jotai/utils";
 import VisitBlogSection from "./visit-blog-section";
 import KakaoAdfit from "@/components/shared/kakao-adfit";
-import Image from "next/image";
 
 export default function BlogRecapMain({
   initialData,
