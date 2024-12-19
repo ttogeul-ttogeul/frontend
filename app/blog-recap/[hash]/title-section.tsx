@@ -11,13 +11,13 @@ export default function TitleSection() {
   const [blogImageUrl] = useAtom(blogImageUrlAtom);
   return (
     <div className="flex w-full items-center justify-center gap-2">
-      <div className="flex flex-shrink-0 items-center justify-center">
+      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center">
         <Image
           src={blogImageUrl}
           alt="blog-profile"
           width={32}
           height={32}
-          className="rounded-full border-[0.5px] border-gray-600"
+          className="aspect-square rounded-full border-[0.5px] border-gray-600 object-cover"
         />
       </div>
       <Text

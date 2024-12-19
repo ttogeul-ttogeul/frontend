@@ -13,7 +13,7 @@ export default function DayOfWeekCard() {
     [weekdayDistribution],
   );
 
-  const MAX_HEIGHT = 173;
+  const MAX_HEIGHT = 145;
 
   const mappedData: [string, number][] = useMemo(
     () =>
@@ -51,21 +51,21 @@ export default function DayOfWeekCard() {
       }
     >
       {mappedData.map(([key, value]) => (
-        <Bar
-          height={value > 0 ? Math.floor((value * MAX_HEIGHT) / maxDay) : 2}
-          key={key}
-          color={
-            value === maxDay
-              ? "bg-gradient-to-b from-violet-600 to-blue-600"
-              : "bg-slate-700"
-          }
-        >
+        <div key={key} className="flex flex-1 flex-col items-center">
+          <Bar
+            height={value > 0 ? Math.floor((value * MAX_HEIGHT) / maxDay) : 2}
+            color={
+              value === maxDay
+                ? "bg-gradient-to-b from-violet-600 to-blue-600"
+                : "bg-slate-700"
+            }
+          />
           <Text
-            className={`mb-2 ${value === maxDay ? "text-gray-50" : "text-gray-400"} `}
+            className={`mt-[7px] ${value === maxDay ? "text-gray-50" : "text-gray-400"} `}
           >
             {key}
           </Text>
-        </Bar>
+        </div>
       ))}
     </StatCard>
   );
