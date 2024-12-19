@@ -17,7 +17,7 @@ export default function TitleSection() {
           alt="blog-profile"
           width={32}
           height={32}
-          className="rounded-full border-[0.5px] border-gray-600"
+          className="aspect-square rounded-full border-[0.5px] border-gray-600 object-cover"
         />
       </div>
       <Text
