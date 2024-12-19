@@ -135,9 +135,8 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
         >
           {blog?.name} 홈으로{" >"}
         </Link>
+        <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" className="mt-12" />
       </FooterSection>
-
-      <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" />
 
       <AlertDialog open={alertOpen}>
         <AlertDialogContent aria-label="alertdialog">

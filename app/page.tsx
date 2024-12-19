@@ -35,7 +35,10 @@ export default async function Home() {
           <ArrowRight />
         </Button>
       </Link>
-      <KakaoAdfit adUnit="DAN-uBhuPeUmZcdr66qz" />
+      <KakaoAdfit
+        adUnit="DAN-uBhuPeUmZcdr66qz"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 transform"
+      />
     </main>
   );
 }
