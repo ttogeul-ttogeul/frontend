@@ -32,6 +32,7 @@ export default function BlogRecapMain({
         height={480} // 원본 이미지 높이
         layout="responsive"
       />
+      <Seperator className={"h-20"} />
       <TitleSection />
       <Seperator className={"h-20"} />
       <PersonaSection />
