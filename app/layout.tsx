@@ -27,7 +27,7 @@ export default function RootLayout({
         )}
         <ReactQueryClientProvider>
           <GlobalJotaiProvider>
-            <div className="no-scrollbar mx-auto h-dvh w-full max-w-440pxr overflow-x-hidden bg-gray-950 px-6">
+            <div className="no-scrollbar mx-auto h-dvh w-full max-w-440pxr overflow-x-hidden bg-gray-950">
               {children}
             </div>
           </GlobalJotaiProvider>
