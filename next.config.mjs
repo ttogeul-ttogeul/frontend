@@ -20,6 +20,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.velog.io",
       },
+      {
+        protocol: "https",
+        hostname: "velcdn.com",
+      },
     ],
   },
   webpack(config) {
