@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { PropsWithChildren } from "react";
 
 interface BarProps {
   className?: string;
@@ -8,11 +9,22 @@ interface BarProps {
   color: string;
 }
 
-export default function Bar({ className, height, color }: BarProps) {
+export default function Bar({
+  children,
+  className,
+  height,
+  color,
+}: PropsWithChildren<BarProps>) {
   return (
     <div
-      className={cn(`w-full rounded-lg ${color}`, height, className)}
+      className={cn(
+        `flex flex-1 items-end justify-center rounded-lg ${color}`,
+        height,
+        className,
+      )}
       style={{ height: `${height}px` }}
-    />
+    >
+      {children}
+    </div>
   );
 }
