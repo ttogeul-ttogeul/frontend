@@ -50,9 +50,9 @@ export default function BlogSelectMode({
         <div className="flex flex-col gap-3 whitespace-pre">
           {"더 다양한 서비스를 지원할 수 있도록\n준비 중입니다."}
         </div>
-
-        <KakaoAdfit adUnit="DAN-BzP9NBV4dkR6CLsR" className="mt-12" />
       </FooterSection>
+
+      <KakaoAdfit adUnit="DAN-BzP9NBV4dkR6CLsR" />
     </>
   );
 }
