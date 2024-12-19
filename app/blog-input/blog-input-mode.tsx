@@ -79,8 +79,15 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
     },
   });
 
+  const normalizeHttps = (url: string): string => {
+    return url.replace(/^HTTPS:/i, "https:");
+  };
+
   const onSubmit = async (data: FormValues) => {
-    const formData = { ...data, blog_domain: blogDomain };
+    const formData = {
+      blog_url: normalizeHttps(data.blog_url),
+      blog_domain: blogDomain,
+    };
 
     mutate(formData);
   };
