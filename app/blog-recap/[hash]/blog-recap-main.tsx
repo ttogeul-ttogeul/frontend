@@ -11,6 +11,7 @@ import { blogAnalyticsAtom } from "@/components/blog-recap/store/atom";
 import { useHydrateAtoms } from "jotai/utils";
 import VisitBlogSection from "./visit-blog-section";
 import KakaoAdfit from "@/components/shared/kakao-adfit";
+import Image from "next/image";
 
 export default function BlogRecapMain({
   initialData,
@@ -23,6 +24,14 @@ export default function BlogRecapMain({
 
   return (
     <main className={"relative flex flex-col items-center py-8 pb-[80px]"}>
+      <Image
+        priority
+        src="/images/top-banner@3x.png"
+        alt="banner"
+        width={880} // 원본 이미지 너비
+        height={480} // 원본 이미지 높이
+        layout="responsive"
+      />
       <TitleSection />
       <Seperator className={"h-20"} />
       <PersonaSection />
