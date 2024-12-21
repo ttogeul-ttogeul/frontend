@@ -41,7 +41,10 @@ export default function FooterSection() {
       </Button>
       <Seperator className={"h-3"} />
       <Button
-        onClick={() => router.push("/")}
+        onClick={() => {
+          router.push("/");
+          router.refresh();
+        }}
         variant={"filled"}
         className={"w-full"}
       >
