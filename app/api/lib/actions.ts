@@ -11,6 +11,7 @@ export const fetchRoot = async () => {
 export const fetchTotalPostCount = async () => {
   const response = await API.get<TotalPostCount>(
     `/v1/blog-analytics/total-post-count`,
+    { headers: { "Cache-Control": "no-store" } },
   );
 
   return response;
