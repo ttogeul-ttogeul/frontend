@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Button } from "@/components/ui/button";
 import ArrowRight from "@/components/icons/arrow-right";
 import Link from "next/link";
