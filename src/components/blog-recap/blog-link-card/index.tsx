@@ -4,8 +4,8 @@ import {
   blogImageUrlAtom,
   blogTitleAtom,
   blogUrlAtom,
-} from "@/components/blog-recap/store/atom";
-import Text from "@/components/ui/text";
+} from "@/src/components/blog-recap/store/atom";
+import Text from "@/src/components/ui/text";
 import Link from "next/link";
 import { removeProtocol } from "./utils";
 

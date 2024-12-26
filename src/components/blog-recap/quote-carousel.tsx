@@ -1,15 +1,15 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/src/components/ui/card";
 import {
   Carousel,
   type CarouselApi,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
+} from "@/src/components/ui/carousel";
 import Image from "next/image";
 import { useState } from "react";
-import Text from "@/components/ui/text";
+import Text from "@/src/components/ui/text";
 import { useAtom } from "jotai";
 import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
 import React from "react";

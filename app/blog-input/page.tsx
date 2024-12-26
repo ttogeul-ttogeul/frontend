@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { type BlogDomain } from "@/constants/blogs";
-import NavigationBar from "@/components/blog-input/navigation-bar";
+import { type BlogDomain } from "@/src/constants/blogs";
+import NavigationBar from "@/src/components/blog-input/navigation-bar";
 import { useRouter } from "next/navigation";
 import BlogInputMode from "./blog-input-mode";
 import BlogSelectMode from "./blog-select-mode";

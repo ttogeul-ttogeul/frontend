@@ -1,4 +1,4 @@
-import { type BlogDomain } from "@/constants/blogs";
+import { type BlogDomain } from "@/src/constants/blogs";
 import { Dispatch, SetStateAction } from "react";
 
 export type BlogInputModeProps = {

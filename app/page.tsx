@@ -1,11 +1,11 @@
 export const dynamic = "force-dynamic";
 
-import { Button } from "@/components/ui/button";
-import ArrowRight from "@/components/icons/arrow-right";
+import { Button } from "@/src/components/ui/button";
+import ArrowRight from "@/src/components/icons/arrow-right";
 import Link from "next/link";
-import Title from "@/components/home/highlighted-title";
+import Title from "@/src/components/home/highlighted-title";
 import { fetchTotalPostCount } from "./api/lib/actions";
-import KakaoAdfit from "@/components/shared/kakao-adfit";
+import KakaoAdfit from "@/src/components/shared/kakao-adfit";
 
 export default async function Home() {
   const { totalPostCount } = await fetchTotalPostCount();

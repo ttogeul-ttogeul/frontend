@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import Seperator from "@/components/ui/seperator";
+import { Button } from "@/src/components/ui/button";
+import Seperator from "@/src/components/ui/seperator";
 import { useRouter } from "next/navigation";
 
 export default function FooterSection() {

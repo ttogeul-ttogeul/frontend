@@ -7,7 +7,7 @@ import {
   CardDescription,
 } from "./card";
 import Seperator from "./seperator";
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/lib/utils";
 
 interface StatCardProps {
   title: React.ReactNode;
