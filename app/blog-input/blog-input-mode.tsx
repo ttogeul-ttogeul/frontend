@@ -1,13 +1,13 @@
 "use client";
 
-import Title from "@/components/home/highlighted-title";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import ArrowRight from "@/components/icons/svgs/arrow-right.svg";
+import Title from "@/src/components/home/highlighted-title";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
+import ArrowRight from "@/src/components/icons/svgs/arrow-right.svg";
 import { useForm } from "react-hook-form";
 import { object, string, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BLOGS } from "@/constants/blogs";
+import { BLOGS } from "@/src/constants/blogs";
 import API from "../api";
 import { AnalysisFormData } from "../api/lib/types";
 import { useMutation } from "@tanstack/react-query";
@@ -20,14 +20,14 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@/src/components/ui/alert-dialog";
 import { type BlogInputModeProps, type BlogAnalyticsResponse } from "./type";
 import {
   TitleSection,
   AnalysisLoading,
   FooterSection,
-} from "@/components/blog-input";
-import KakaoAdfit from "@/components/shared/kakao-adfit";
+} from "@/src/components/blog-input";
+import KakaoAdfit from "@/src/components/shared/kakao-adfit";
 
 const schema = object({
   blog_url: string().min(1),

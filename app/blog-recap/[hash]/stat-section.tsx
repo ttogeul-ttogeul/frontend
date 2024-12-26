@@ -1,16 +1,16 @@
-import CharCountCard from "@/components/blog-recap/char-count-card";
-import CodeBlockCard from "@/components/blog-recap/code-block-card";
-import DayOfWeekCard from "@/components/blog-recap/day-of-week-card";
-import ImageCountCard from "@/components/blog-recap/image-count-card";
+import CharCountCard from "@/src/components/blog-recap/char-count-card";
+import CodeBlockCard from "@/src/components/blog-recap/code-block-card";
+import DayOfWeekCard from "@/src/components/blog-recap/day-of-week-card";
+import ImageCountCard from "@/src/components/blog-recap/image-count-card";
 import {
   averageCodeBlockCountAtom,
   averageImageCountAtom,
   averageWordCountAtom,
   totalPostCountAtom,
-} from "@/components/blog-recap/store/atom";
-import TotalPostingCard from "@/components/blog-recap/total-posting-card";
-import Seperator from "@/components/ui/seperator";
-import Text from "@/components/ui/text";
+} from "@/src/components/blog-recap/store/atom";
+import TotalPostingCard from "@/src/components/blog-recap/total-posting-card";
+import Seperator from "@/src/components/ui/seperator";
+import Text from "@/src/components/ui/text";
 import { useAtom } from "jotai";
 
 export default function StatSection() {

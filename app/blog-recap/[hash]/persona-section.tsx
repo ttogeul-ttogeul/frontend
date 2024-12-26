@@ -1,6 +1,6 @@
-import PersonaCard from "@/components/blog-recap/persona-card";
-import Seperator from "@/components/ui/seperator";
-import Text from "@/components/ui/text";
+import PersonaCard from "@/src/components/blog-recap/persona-card";
+import Seperator from "@/src/components/ui/seperator";
+import Text from "@/src/components/ui/text";
 
 export default function PersonaSection() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import ArrowLeft from "@/components/icons/svgs/arrow-left.svg";
+import ArrowLeft from "@/src/components/icons/svgs/arrow-left.svg";
 import { Button } from "../ui/button";
 
 type NavigationBarProps = {

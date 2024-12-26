@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReactQueryClientProvider from "@/providers/queryclient-provider";
-import GlobalJotaiProvider from "@/providers/global-jotai-provider";
-import GoogleAnalytics from "@/components/GooglyAnalytics";
+import ReactQueryClientProvider from "@/src/providers/queryclient-provider";
+import GlobalJotaiProvider from "@/src/providers/global-jotai-provider";
+import GoogleAnalytics from "@/src/components/GooglyAnalytics";
 
 export const metadata: Metadata = {
   title: "2024 테블리 | 테크블로그 리포트",
