@@ -1,11 +1,11 @@
-import Title from "@/components/home/highlighted-title";
-import { Button } from "@/components/ui/button";
-import { BLOGS, type BlogType } from "@/constants/blogs";
-import TistoryLogo from "@/components/icons/svgs/logo-tistory.svg";
-import VelogLogo from "@/components/icons/svgs/logo-velog.svg";
+import Title from "@/src/components/home/highlighted-title";
+import { Button } from "@/src/components/ui/button";
+import { BLOGS, type BlogType } from "@/src/constants/blogs";
+import TistoryLogo from "@/src/components/icons/svgs/logo-tistory.svg";
+import VelogLogo from "@/src/components/icons/svgs/logo-velog.svg";
 import { type BlogSelectModeProps } from "./type";
-import { FooterSection, TitleSection } from "@/components/blog-input";
-import KakaoAdfit from "@/components/shared/kakao-adfit";
+import { FooterSection, TitleSection } from "@/src/components/blog-input";
+import KakaoAdfit from "@/src/components/shared/kakao-adfit";
 
 export default function BlogSelectMode({
   setSelectMode,

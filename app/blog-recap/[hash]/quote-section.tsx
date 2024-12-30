@@ -1,6 +1,6 @@
-import QuoteCarousel from "@/components/blog-recap/quote-carousel";
-import Seperator from "@/components/ui/seperator";
-import Text from "@/components/ui/text";
+import QuoteCarousel from "@/src/components/blog-recap/quote-carousel";
+import Seperator from "@/src/components/ui/seperator";
+import Text from "@/src/components/ui/text";
 
 export default function QuoteSection() {
   return (

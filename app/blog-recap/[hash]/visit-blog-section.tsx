@@ -1,6 +1,6 @@
-import BlogLinkCard from "@/components/blog-recap/blog-link-card";
-import Seperator from "@/components/ui/seperator";
-import Text from "@/components/ui/text";
+import BlogLinkCard from "@/src/components/blog-recap/blog-link-card";
+import Seperator from "@/src/components/ui/seperator";
+import Text from "@/src/components/ui/text";
 
 export default function VisitBlogSection() {
   return (

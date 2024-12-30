@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import { personaAtom } from "../store/atom";
-import Text from "@/components/ui/text";
+import Text from "@/src/components/ui/text";
 import Image from "next/image";
 import React from "react";
 

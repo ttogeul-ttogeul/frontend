@@ -1,10 +1,10 @@
-import Bar from "@/components/ui/bar";
-import StatCard from "@/components/ui/stat-card";
-import Text from "@/components/ui/text";
+import Bar from "@/src/components/ui/bar";
+import StatCard from "@/src/components/ui/stat-card";
+import Text from "@/src/components/ui/text";
 import { useMemo } from "react";
 import { DAY_MAPPING } from "./constants";
 import { useAtom } from "jotai";
-import { weekdayDistributionAtom } from "@/components/blog-recap/store/atom";
+import { weekdayDistributionAtom } from "@/src/components/blog-recap/store/atom";
 
 export default function DayOfWeekCard() {
   const [weekdayDistribution] = useAtom(weekdayDistributionAtom);
