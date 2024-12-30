@@ -9,9 +9,9 @@ import { object, string, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BLOGS } from "@/src/constants/blogs";
 import API from "../api";
-import { AnalysisFormData } from "../api/lib/types";
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { AnalysisFormData, BlogAnalyticsResponse } from "../api/lib/types";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -21,7 +21,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
 } from "@/src/components/ui/alert-dialog";
-import { type BlogInputModeProps, type BlogAnalyticsResponse } from "./type";
+import { type BlogInputModeProps, type BlogAnalyticsIdResponse } from "./type";
 import {
   TitleSection,
   AnalysisLoading,
@@ -61,17 +61,19 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
     defaultValues: { blog_url: "" },
   });
 
-  const { mutate, isPending, isSuccess } = useMutation<
-    BlogAnalyticsResponse,
-    ApiError,
-    AnalysisFormData
-  >({
-    mutationFn: async (data: AnalysisFormData) => {
-      const res = await API.post("/v1/blog-analytics", data);
-      return res as BlogAnalyticsResponse;
-    },
-    onSuccess: (res) => {
-      router.push(`/blog-recap/${res.blogAnalyticsId}`);
+  const {
+    mutate,
+    isPending,
+    isSuccess,
+    status: mutateStatus,
+    data: blogAnalyticsIdResponse,
+  } = useMutation<BlogAnalyticsIdResponse, ApiError, AnalysisFormData>({
+    mutationFn: async (formData: AnalysisFormData) => {
+      const res = await API.post<AnalysisFormData, BlogAnalyticsIdResponse>(
+        "/v2/blog-analytics",
+        formData,
+      );
+      return res;
     },
     onError: (err) => {
       if (err.message === "Network Error") {
@@ -79,6 +81,36 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
       } else {
         showAlert(err.message || "서버 에러입니다");
       }
+    },
+  });
+
+  const fetchFunction = async () => {
+    const res = await API.get<BlogAnalyticsResponse>("/v2/blog-analytics", {
+      params: { id: blogAnalyticsIdResponse?.data.blogAnalyticsId ?? "" },
+    });
+
+    if (res.status === 202) {
+      throw Error("PENDING");
+    }
+    return res.data;
+  };
+
+  const {
+    data,
+    isFetching,
+    status: queryStatus,
+  } = useQuery({
+    queryKey: [
+      "fetch-blog-analytics",
+      blogAnalyticsIdResponse?.data.blogAnalyticsId,
+    ],
+    queryFn: fetchFunction,
+    enabled: isSuccess,
+    refetchInterval: (query) =>
+      query.state.error?.message === "PENDING" ? 2000 : false, // 202일 때만 2초마다 재시도
+    retry: (failureCount, error) => {
+      if (error.message === "PENDING" && failureCount < 30) return true;
+      return false; // 400, 500 등 다른 에러는 재시도 X
     },
   });
 
@@ -95,8 +127,15 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
     mutate(formData);
   };
 
+  useEffect(() => {
+    if (data && queryStatus === "success" && mutateStatus === "success") {
+      router.push(`/blog-recap/${data.id}`);
+      router.refresh();
+    }
+  }, [data, isSuccess, mutateStatus, queryStatus, router]);
+
   // mutation이 종료된 후에도 로딩창을 유지한 뒤 /blog-recap 페이지로 이동
-  if (isPending || isSuccess) return <AnalysisLoading />;
+  if (isPending || isSuccess || isFetching) return <AnalysisLoading />;
 
   return (
     <>
