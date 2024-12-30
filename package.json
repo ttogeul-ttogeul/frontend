@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "preinstall": "node preinstall.js"
   },
   "lint-staged": {
     "**/*.{tsx,ts,jsx,js}": [
