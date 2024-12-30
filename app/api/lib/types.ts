@@ -14,4 +14,6 @@ export type TotalPostCount = {
   totalPostCount: string;
 };
 
+export type TotalPostCountResponse = AxiosResponse<TotalPostCount>;
+
 export type BlogAnalyticsResponse = AxiosResponse<BlogAnalytics>;
