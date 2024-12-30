@@ -1,4 +1,5 @@
 import { type BlogDomain } from "@/src/constants/blogs";
+import { AxiosResponse } from "axios";
 import { Dispatch, SetStateAction } from "react";
 
 export type BlogInputModeProps = {
@@ -10,4 +11,6 @@ export type BlogSelectModeProps = {
   setSelectMode: Dispatch<SetStateAction<boolean>>;
 };
 
-export type BlogAnalyticsResponse = { blogAnalyticsId: string };
+export type BlogAnalyticsId = { blogAnalyticsId: string };
+
+export type BlogAnalyticsIdResponse = AxiosResponse<BlogAnalyticsId>;

@@ -1,3 +1,6 @@
+import { AxiosResponse } from "axios";
+import { BlogAnalytics } from "./blog-recap/types";
+
 export type RootResponse = {
   message: string;
 };
@@ -10,3 +13,5 @@ export type AnalysisFormData = {
 export type TotalPostCount = {
   totalPostCount: string;
 };
+
+export type BlogAnalyticsResponse = AxiosResponse<BlogAnalytics>;
