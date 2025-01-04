@@ -1,6 +1,6 @@
 import Image from "next/image";
-import StatCard from "../ui/stat-card";
-import Text from "../ui/text";
+import StatCard from "../../ui/stat-card";
+import Text from "../../ui/text";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 
 interface CharCountCardProps {

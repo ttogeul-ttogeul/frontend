@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo } from "react";
-import Bar from "../ui/bar";
-import StatCard from "../ui/stat-card";
-import Text from "../ui/text";
+import Bar from "@/src/components/ui/bar";
+import StatCard from "@/src/components/ui/stat-card";
+import Text from "@/src/components/ui/text";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 import { useAtom } from "jotai";
 import { monthlyDistributionAtom } from "@/src/components/blog-recap/store";

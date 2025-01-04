@@ -1,6 +1,6 @@
-import StatCard from "../ui/stat-card";
+import StatCard from "@/src/components/ui/stat-card";
 import Image from "next/image";
-import Text from "../ui/text";
+import Text from "@/src/components/ui/text";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 
 interface CodeBlockCardProps {
