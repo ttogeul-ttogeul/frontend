@@ -2,15 +2,21 @@
 
 import ArrowLeft from "@/src/components/icons/svgs/arrow-left.svg";
 import { Button } from "../ui/button";
+import { useAtom } from "jotai";
+import { selectModeState } from "./store";
+import { useRouter } from "next/router";
 
-type NavigationBarProps = {
-  onClickHandler: () => void;
-};
+export default function NavigationBar() {
+  const router = useRouter();
+  const [selectMode, setSelectMode] = useAtom(selectModeState);
 
-export default function NavigationBar({ onClickHandler }: NavigationBarProps) {
+  const handleClickBackButton = () => {
+    if (selectMode) router.push("/");
+    if (!selectMode) setSelectMode(!selectMode);
+  };
   return (
     <div className="mb-5 mt-6">
-      <Button variant="ghost" size={"md"} onClick={onClickHandler}>
+      <Button variant="ghost" size={"md"} onClick={handleClickBackButton}>
         <ArrowLeft width={24} height={24} />
         뒤로
       </Button>
