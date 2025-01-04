@@ -23,11 +23,11 @@ import {
   FooterSection,
 } from "@/src/components/blog-input";
 import KakaoAdfit from "@/src/components/shared/kakao-adfit";
+import { blogDomainState } from "@/src/components/blog-input/store";
 import { FormValues, schema } from "./types";
 import { normalizeHttps } from "./lib";
 import { useAtom, useAtomValue } from "jotai";
 import { alertMessageState, alertOpenState } from "./store";
-import { blogDomainState } from "../store";
 import { useBlogAnalytics } from "./hooks";
 
 export default function BlogInputMode() {
