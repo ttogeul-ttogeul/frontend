@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { type BlogDomain } from "@/src/constants/blogs";
+import { type BlogDomain } from "@/src/components/blog-input/types";
 import NavigationBar from "@/src/components/blog-input/navigation-bar";
 import { useRouter } from "next/navigation";
-import BlogInputMode from "./blog-input-mode";
+import BlogInputMode from "@/src/components/blog-input/blog-input-mode";
 import BlogSelectMode from "./blog-select-mode";
 
 export default function Page() {
   const router = useRouter();
   const [selectMode, setSelectMode] = useState(true);
-  const [blogDomain, setBlogDomain] = useState<BlogDomain>("tistory");
+  const [, setBlogDomain] = useState<BlogDomain>("tistory");
 
   const onClickHandler = () => {
     if (selectMode) router.push("/");
@@ -30,7 +30,7 @@ export default function Page() {
             />
           </>
         ) : (
-          <BlogInputMode blogDomain={blogDomain} />
+          <BlogInputMode />
         )}
       </div>
     </>

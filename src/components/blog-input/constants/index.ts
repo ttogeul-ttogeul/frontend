@@ -1,11 +1,4 @@
-export type BlogType = {
-  id: "tistory" | "velog";
-  name: string;
-  bgColor: string;
-  textColor: string;
-  urlExample: string;
-  homeUrl: string;
-};
+import { BlogType } from "../types";
 
 export const BLOGS: BlogType[] = [
   {
@@ -25,5 +18,3 @@ export const BLOGS: BlogType[] = [
     homeUrl: "https://velog.io",
   },
 ] as const;
-
-export type BlogDomain = (typeof BLOGS)[number]["id"];
