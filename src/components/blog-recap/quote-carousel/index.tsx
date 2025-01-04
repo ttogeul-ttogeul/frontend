@@ -45,7 +45,7 @@ const QuoteCarousel = () => {
             }}
             className="mb-4 h-[400px] w-full max-w-[300px]"
           >
-            <CarouselContent>
+            <CarouselContent className="transition-transform duration-75 ease-out">
               {quotes.map(({ quote, postTitle }) => (
                 <CarouselItem key={quote} className={"h-[400px]"}>
                   <Card className={"relative h-full rounded-2xl border-none"}>
