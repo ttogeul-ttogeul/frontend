@@ -1,12 +1,31 @@
-import { AnalysisFormData } from "@/app/api/lib/types";
+import { AnalysisFormData, BlogAnalyticsResponse } from "@/app/api/lib/types";
 import { BlogAnalyticsIdResponse } from "@/app/blog-input/type";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ApiError } from "../types";
 import useAlert from "./useAlert";
-import { fetchBlogAnalytics, postAnalytics } from "@/app/api/lib/actions";
+import API from "@/app/api";
 
 export default function useBlogAnalytics() {
   const { showAlert } = useAlert();
+
+  const postAnalytics = async (formData: AnalysisFormData) => {
+    const res = await API.post<AnalysisFormData, BlogAnalyticsIdResponse>(
+      "/v2/blog-analytics",
+      formData,
+    );
+    return res;
+  };
+
+  const fetchBlogAnalytics = async (blogAnalyticsId: string) => {
+    const res = await API.get<BlogAnalyticsResponse>("/v2/blog-analytics", {
+      params: { id: blogAnalyticsId ?? "" },
+    });
+
+    if (res.status === 202) {
+      throw Error("PENDING");
+    }
+    return res.data;
+  };
 
   const {
     mutate,
