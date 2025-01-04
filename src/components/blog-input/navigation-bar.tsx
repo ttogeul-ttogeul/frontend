@@ -4,7 +4,7 @@ import ArrowLeft from "@/src/components/icons/svgs/arrow-left.svg";
 import { Button } from "../ui/button";
 import { useAtom } from "jotai";
 import { selectModeState } from "./store";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function NavigationBar() {
   const router = useRouter();
