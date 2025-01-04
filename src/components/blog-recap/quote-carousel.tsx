@@ -11,7 +11,11 @@ import Image from "next/image";
 import { useState } from "react";
 import Text from "@/src/components/ui/text";
 import { useAtom } from "jotai";
-import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
+import {
+  blogImageUrlAtom,
+  blogTitleAtom,
+  quotesAtom,
+} from "@/src/components/blog-recap/store";
 import React from "react";
 
 const QuoteCarousel = () => {

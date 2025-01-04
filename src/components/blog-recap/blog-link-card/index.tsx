@@ -4,7 +4,7 @@ import {
   blogImageUrlAtom,
   blogTitleAtom,
   blogUrlAtom,
-} from "@/src/components/blog-recap/store/atom";
+} from "@/src/components/blog-recap/store";
 import Text from "@/src/components/ui/text";
 import Link from "next/link";
 import { removeProtocol } from "./utils";

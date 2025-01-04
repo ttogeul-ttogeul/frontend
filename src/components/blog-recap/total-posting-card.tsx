@@ -6,7 +6,7 @@ import StatCard from "../ui/stat-card";
 import Text from "../ui/text";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
 import { useAtom } from "jotai";
-import { monthlyDistributionAtom } from "./store/atom";
+import { monthlyDistributionAtom } from "@/src/components/blog-recap/store";
 
 interface TotalPostingCardProps {
   totalPostCount: BlogAnalytics["result"]["totalPostCount"];

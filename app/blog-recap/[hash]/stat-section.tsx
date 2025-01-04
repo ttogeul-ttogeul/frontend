@@ -7,7 +7,7 @@ import {
   averageImageCountAtom,
   averageWordCountAtom,
   totalPostCountAtom,
-} from "@/src/components/blog-recap/store/atom";
+} from "@/src/components/blog-recap/store";
 import TotalPostingCard from "@/src/components/blog-recap/total-posting-card";
 import Seperator from "@/src/components/ui/seperator";
 import Text from "@/src/components/ui/text";

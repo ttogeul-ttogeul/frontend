@@ -7,7 +7,7 @@ import QuoteSection from "./quote-section";
 import StatSection from "./stat-section";
 import TitleSection from "./title-section";
 import { BlogAnalytics } from "@/app/api/lib/blog-recap/types";
-import { blogAnalyticsAtom } from "@/src/components/blog-recap/store/atom";
+import { blogAnalyticsAtom } from "@/src/components/blog-recap/store";
 import { useHydrateAtoms } from "jotai/utils";
 import VisitBlogSection from "./visit-blog-section";
 import KakaoAdfit from "@/src/components/shared/kakao-adfit";

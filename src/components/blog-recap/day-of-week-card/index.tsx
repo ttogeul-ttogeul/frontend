@@ -4,7 +4,7 @@ import Text from "@/src/components/ui/text";
 import { useMemo } from "react";
 import { DAY_MAPPING } from "./constants";
 import { useAtom } from "jotai";
-import { weekdayDistributionAtom } from "@/src/components/blog-recap/store/atom";
+import { weekdayDistributionAtom } from "@/src/components/blog-recap/store";
 
 export default function DayOfWeekCard() {
   const [weekdayDistribution] = useAtom(weekdayDistributionAtom);
