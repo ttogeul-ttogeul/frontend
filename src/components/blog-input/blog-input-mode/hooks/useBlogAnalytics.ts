@@ -1,9 +1,9 @@
-import API from "@/app/api";
-import { AnalysisFormData, BlogAnalyticsResponse } from "@/app/api/lib/types";
+import { AnalysisFormData } from "@/app/api/lib/types";
 import { BlogAnalyticsIdResponse } from "@/app/blog-input/type";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ApiError } from "../types";
 import useAlert from "./useAlert";
+import { fetchBlogAnalytics, postAnalytics } from "@/app/api/lib/actions";
 
 export default function useBlogAnalytics() {
   const { showAlert } = useAlert();
@@ -15,13 +15,7 @@ export default function useBlogAnalytics() {
     status: mutateStatus,
     data: blogAnalyticsIdResponse,
   } = useMutation<BlogAnalyticsIdResponse, ApiError, AnalysisFormData>({
-    mutationFn: async (formData: AnalysisFormData) => {
-      const res = await API.post<AnalysisFormData, BlogAnalyticsIdResponse>(
-        "/v2/blog-analytics",
-        formData,
-      );
-      return res;
-    },
+    mutationFn: postAnalytics,
     onError: (err) => {
       if (err.message === "Network Error") {
         showAlert(`인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`);
@@ -30,17 +24,6 @@ export default function useBlogAnalytics() {
       }
     },
   });
-
-  const fetchBlogAnalytics = async () => {
-    const res = await API.get<BlogAnalyticsResponse>("/v2/blog-analytics", {
-      params: { id: blogAnalyticsIdResponse?.data.blogAnalyticsId ?? "" },
-    });
-
-    if (res.status === 202) {
-      throw Error("PENDING");
-    }
-    return res.data;
-  };
 
   const {
     data,
@@ -51,7 +34,8 @@ export default function useBlogAnalytics() {
       "fetch-blog-analytics",
       blogAnalyticsIdResponse?.data.blogAnalyticsId,
     ],
-    queryFn: fetchBlogAnalytics,
+    queryFn: () =>
+      fetchBlogAnalytics(blogAnalyticsIdResponse?.data.blogAnalyticsId ?? ""),
     enabled: isMutateSuccess,
     refetchInterval: (query) =>
       query.state.error?.message === "PENDING" ? 2000 : false, // 202일 때만 2초마다 재시도
