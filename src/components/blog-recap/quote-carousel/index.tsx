@@ -11,7 +11,11 @@ import Image from "next/image";
 import { useState } from "react";
 import Text from "@/src/components/ui/text";
 import { useAtom } from "jotai";
-import { blogImageUrlAtom, blogTitleAtom, quotesAtom } from "./store/atom";
+import {
+  blogImageUrlAtom,
+  blogTitleAtom,
+  quotesAtom,
+} from "@/src/components/blog-recap/store";
 import React from "react";
 
 const QuoteCarousel = () => {
@@ -41,7 +45,7 @@ const QuoteCarousel = () => {
             }}
             className="mb-4 h-[400px] w-full max-w-[300px]"
           >
-            <CarouselContent>
+            <CarouselContent className="transition-transform duration-75 ease-out">
               {quotes.map(({ quote, postTitle }) => (
                 <CarouselItem key={quote} className={"h-[400px]"}>
                   <Card className={"relative h-full rounded-2xl border-none"}>

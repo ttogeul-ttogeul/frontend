@@ -1,7 +1,7 @@
 import {
   blogImageUrlAtom,
   blogTitleAtom,
-} from "@/src/components/blog-recap/store/atom";
+} from "@/src/components/blog-recap/store";
 import Text from "@/src/components/ui/text";
 import { useAtom } from "jotai";
 import Image from "next/image";
