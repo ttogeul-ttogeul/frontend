@@ -1,37 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { type BlogDomain } from "@/src/constants/blogs";
 import NavigationBar from "@/src/components/blog-input/navigation-bar";
-import { useRouter } from "next/navigation";
-import BlogInputMode from "./blog-input-mode";
-import BlogSelectMode from "./blog-select-mode";
+import BlogInputMode from "@/src/components/blog-input/blog-input-mode";
+import BlogSelectMode from "@/src/components/blog-input/blog-select-mode";
+import { useAtomValue } from "jotai";
+import { selectModeState } from "@/src/components/blog-input/store";
 
 export default function Page() {
-  const router = useRouter();
-  const [selectMode, setSelectMode] = useState(true);
-  const [blogDomain, setBlogDomain] = useState<BlogDomain>("tistory");
-
-  const onClickHandler = () => {
-    if (selectMode) router.push("/");
-    if (!selectMode) setSelectMode((selectMode) => !selectMode);
-  };
+  const selectMode = useAtomValue(selectModeState);
 
   return (
     <>
-      <NavigationBar onClickHandler={onClickHandler} />
-
+      <NavigationBar />
       <div className="flex h-[calc(100dvh-5.25rem)] flex-col justify-between">
-        {selectMode ? (
-          <>
-            <BlogSelectMode
-              setBlogDomain={setBlogDomain}
-              setSelectMode={setSelectMode}
-            />
-          </>
-        ) : (
-          <BlogInputMode blogDomain={blogDomain} />
-        )}
+        {selectMode ? <BlogSelectMode /> : <BlogInputMode />}
       </div>
     </>
   );

@@ -1,19 +1,26 @@
 import Title from "@/src/components/home/highlighted-title";
 import { Button } from "@/src/components/ui/button";
-import { BLOGS, type BlogType } from "@/src/constants/blogs";
+import { BLOGS } from "@/src/components/blog-input/constants";
 import TistoryLogo from "@/src/components/icons/svgs/logo-tistory.svg";
 import VelogLogo from "@/src/components/icons/svgs/logo-velog.svg";
-import { type BlogSelectModeProps } from "./type";
 import { FooterSection, TitleSection } from "@/src/components/blog-input";
 import KakaoAdfit from "@/src/components/shared/kakao-adfit";
+import { BlogType } from "@/src/components/blog-input/types";
+import { useSetAtom } from "jotai";
+import { blogDomainState, selectModeState } from "../store";
 
-export default function BlogSelectMode({
-  setSelectMode,
-  setBlogDomain,
-}: BlogSelectModeProps) {
+export default function BlogSelectMode() {
   const logos = {
     tistory: <TistoryLogo width={24} height={24} />,
     velog: <VelogLogo width={24} height={24} />,
+  };
+
+  const setBlogDomain = useSetAtom(blogDomainState);
+  const setSelectMode = useSetAtom(selectModeState);
+
+  const handleClickDomainButton = (blog: BlogType) => {
+    setBlogDomain(blog.id);
+    setSelectMode(false);
   };
 
   return (
@@ -29,15 +36,12 @@ export default function BlogSelectMode({
         </TitleSection>
 
         <div className="flex flex-col gap-3">
-          {BLOGS.map((blog: BlogType) => (
+          {BLOGS.map((blog) => (
             <Button
               key={blog.id}
               variant={"filled"}
               className={`${blog.bgColor} relative text-white`}
-              onClick={() => {
-                setBlogDomain(blog.id);
-                setSelectMode(false);
-              }}
+              onClick={() => handleClickDomainButton(blog)}
             >
               <div className="absolute left-6">{logos[blog.id]}</div>
               {blog.name}

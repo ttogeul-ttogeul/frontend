@@ -5,13 +5,9 @@ import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import ArrowRight from "@/src/components/icons/svgs/arrow-right.svg";
 import { useForm } from "react-hook-form";
-import { object, string, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BLOGS } from "@/src/constants/blogs";
-import API from "../api";
-import { AnalysisFormData, BlogAnalyticsResponse } from "../api/lib/types";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { BLOGS } from "@/src/components/blog-input/constants";
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -21,34 +17,25 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
 } from "@/src/components/ui/alert-dialog";
-import { type BlogInputModeProps, type BlogAnalyticsIdResponse } from "./type";
 import {
   TitleSection,
   AnalysisLoading,
   FooterSection,
 } from "@/src/components/blog-input";
 import KakaoAdfit from "@/src/components/shared/kakao-adfit";
+import { blogDomainState } from "@/src/components/blog-input/store";
+import { FormValues, schema } from "./types";
+import { normalizeHttps } from "./lib";
+import { useAtom, useAtomValue } from "jotai";
+import { alertMessageState, alertOpenState } from "./store";
+import { useBlogAnalytics } from "./hooks";
 
-const schema = object({
-  blog_url: string().min(1),
-});
-
-type FormValues = z.infer<typeof schema>;
-
-type ApiError = {
-  message: string;
-};
-
-export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
+export default function BlogInputMode() {
   const router = useRouter();
 
-  const [alertOpen, setAlertOpen] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-
-  const showAlert = (message: string) => {
-    setAlertMessage(message);
-    setAlertOpen(true);
-  };
+  const [alertOpen, setAlertOpen] = useAtom(alertOpenState);
+  const alertMessage = useAtomValue(alertMessageState);
+  const blogDomain = useAtomValue(blogDomainState);
 
   const blog = BLOGS.find((blog) => blog.id === blogDomain);
 
@@ -62,61 +49,14 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
   });
 
   const {
-    mutate,
-    isPending,
-    isSuccess,
-    status: mutateStatus,
-    data: blogAnalyticsIdResponse,
-  } = useMutation<BlogAnalyticsIdResponse, ApiError, AnalysisFormData>({
-    mutationFn: async (formData: AnalysisFormData) => {
-      const res = await API.post<AnalysisFormData, BlogAnalyticsIdResponse>(
-        "/v2/blog-analytics",
-        formData,
-      );
-      return res;
-    },
-    onError: (err) => {
-      if (err.message === "Network Error") {
-        showAlert(`인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`);
-      } else {
-        showAlert(err.message || "서버 에러입니다");
-      }
-    },
-  });
-
-  const fetchFunction = async () => {
-    const res = await API.get<BlogAnalyticsResponse>("/v2/blog-analytics", {
-      params: { id: blogAnalyticsIdResponse?.data.blogAnalyticsId ?? "" },
-    });
-
-    if (res.status === 202) {
-      throw Error("PENDING");
-    }
-    return res.data;
-  };
-
-  const {
     data,
+    mutate,
     isFetching,
-    status: queryStatus,
-  } = useQuery({
-    queryKey: [
-      "fetch-blog-analytics",
-      blogAnalyticsIdResponse?.data.blogAnalyticsId,
-    ],
-    queryFn: fetchFunction,
-    enabled: isSuccess,
-    refetchInterval: (query) =>
-      query.state.error?.message === "PENDING" ? 2000 : false, // 202일 때만 2초마다 재시도
-    retry: (failureCount, error) => {
-      if (error.message === "PENDING" && failureCount < 30) return true;
-      return false; // 400, 500 등 다른 에러는 재시도 X
-    },
-  });
-
-  const normalizeHttps = (url: string): string => {
-    return url.replace(/^HTTPS:/i, "https:");
-  };
+    isMutatePending,
+    isMutateSuccess,
+    mutateStatus,
+    queryStatus,
+  } = useBlogAnalytics();
 
   const onSubmit = async (data: FormValues) => {
     const formData = {
@@ -132,10 +72,11 @@ export default function BlogInputMode({ blogDomain }: BlogInputModeProps) {
       router.push(`/blog-recap/${data.id}`);
       router.refresh();
     }
-  }, [data, isSuccess, mutateStatus, queryStatus, router]);
+  }, [data, mutateStatus, queryStatus, router]);
 
   // mutation이 종료된 후에도 로딩창을 유지한 뒤 /blog-recap 페이지로 이동
-  if (isPending || isSuccess || isFetching) return <AnalysisLoading />;
+  if (isMutatePending || isMutateSuccess || isFetching)
+    return <AnalysisLoading />;
 
   return (
     <>
