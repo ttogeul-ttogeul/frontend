@@ -11,13 +11,6 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
-} from "@/src/components/ui/alert-dialog";
-import {
   TitleSection,
   AnalysisLoading,
   FooterSection,
@@ -26,17 +19,14 @@ import KakaoAdfit from "@/src/components/shared/kakao-adfit";
 import { blogDomainState } from "@/src/components/blog-input/store";
 import { FormValues, schema } from "./types";
 import { normalizeHttps } from "./lib";
-import { useAtom, useAtomValue } from "jotai";
-import { alertMessageState, alertOpenState } from "./store";
+import { useAtomValue } from "jotai";
 import { useBlogAnalytics } from "./hooks";
+import Alert from "@/src/components/shared/alert";
 
 export default function BlogInputMode() {
   const router = useRouter();
 
-  const [alertOpen, setAlertOpen] = useAtom(alertOpenState);
-  const alertMessage = useAtomValue(alertMessageState);
   const blogDomain = useAtomValue(blogDomainState);
-
   const blog = BLOGS.find((blog) => blog.id === blogDomain);
 
   const {
@@ -75,8 +65,9 @@ export default function BlogInputMode() {
   }, [data, mutateStatus, queryStatus, router]);
 
   // mutation이 종료된 후에도 로딩창을 유지한 뒤 /blog-recap 페이지로 이동
-  if (isMutatePending || isMutateSuccess || isFetching)
+  if (isMutatePending || isMutateSuccess || isFetching) {
     return <AnalysisLoading />;
+  }
 
   return (
     <>
@@ -125,22 +116,7 @@ export default function BlogInputMode() {
         <KakaoAdfit adUnit="DAN-1gwdntIcxzgRo6YC" className="mt-12" />
       </FooterSection>
 
-      <AlertDialog open={alertOpen}>
-        <AlertDialogContent aria-label="alertdialog">
-          <AlertDialogTitle className="hidden" />
-          <AlertDialogDescription className="whitespace-pre-line">
-            {alertMessage || "메시지를 길게 써보겠습니다. 이것은 메시지입니다."}
-          </AlertDialogDescription>
-          <AlertDialogAction
-            onClick={() => {
-              setAlertOpen(false);
-            }}
-            className="w-full"
-          >
-            확인
-          </AlertDialogAction>
-        </AlertDialogContent>
-      </AlertDialog>
+      <Alert />
     </>
   );
 }

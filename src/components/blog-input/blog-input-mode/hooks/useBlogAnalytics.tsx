@@ -2,11 +2,11 @@ import { AnalysisFormData, BlogAnalyticsResponse } from "@/app/api/lib/types";
 import { BlogAnalyticsIdResponse } from "@/app/blog-input/type";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ApiError } from "../types";
-import useAlert from "./useAlert";
 import API from "@/app/api";
+import { useAlert } from "@/src/components/shared/alert/hooks";
 
-export default function useBlogAnalytics() {
-  const { showAlert } = useAlert();
+export const useBlogAnalytics = () => {
+  const { setAlertMessage, handleAlert } = useAlert();
 
   const postAnalytics = async (formData: AnalysisFormData) => {
     const res = await API.post<AnalysisFormData, BlogAnalyticsIdResponse>(
@@ -36,10 +36,13 @@ export default function useBlogAnalytics() {
   } = useMutation<BlogAnalyticsIdResponse, ApiError, AnalysisFormData>({
     mutationFn: postAnalytics,
     onError: (err) => {
+      handleAlert(true);
       if (err.message === "Network Error") {
-        showAlert(`인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`);
+        setAlertMessage(
+          `인터넷 연결을 확인하거나,\n잠시 후 다시 시도해주세요.`,
+        );
       } else {
-        showAlert(err.message || "서버 에러입니다");
+        setAlertMessage(err.message);
       }
     },
   });
@@ -73,4 +76,4 @@ export default function useBlogAnalytics() {
     mutateStatus,
     isMutateSuccess,
   };
-}
+};
