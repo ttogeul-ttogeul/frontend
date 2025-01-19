@@ -1,9 +1,10 @@
 import { AnalysisFormData, BlogAnalyticsResponse } from "@/app/api/lib/types";
-import { BlogAnalyticsIdResponse } from "@/app/blog-input/type";
+
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ApiError } from "../types";
 import API from "@/app/api";
 import { useAlert } from "@/src/components/shared/alert/hooks";
+import { BlogAnalyticsIdResponse } from "@/src/components/blog-input/types";
 
 export const useBlogAnalytics = () => {
   const { setAlertMessage, handleAlert } = useAlert();

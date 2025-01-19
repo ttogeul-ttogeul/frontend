@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { BLOGS } from "../constants";
+import { AxiosResponse } from "axios";
 
 export type BlogInputModeProps = {
   blogDomain: BlogDomain;
@@ -22,3 +23,5 @@ export type BlogType = {
   urlExample: string;
   homeUrl: string;
 };
+
+export type BlogAnalyticsIdResponse = AxiosResponse<BlogAnalyticsId>;
