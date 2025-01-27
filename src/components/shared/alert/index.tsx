@@ -5,7 +5,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
 } from "@/src/components/ui/alert-dialog";
-import { useAlert } from "./hooks";
+import { useAlert } from "@/src/hooks";
 
 export default function Alert() {
   const { alert, handleAlert, alertMessage } = useAlert();
@@ -14,7 +14,7 @@ export default function Alert() {
       <AlertDialogContent aria-label="alertdialog">
         <AlertDialogTitle className="hidden" />
         <AlertDialogDescription className="whitespace-pre-line">
-          {alertMessage || "메시지를 길게 써보겠습니다. 이것은 메시지입니다."}
+          {alertMessage}
         </AlertDialogDescription>
         <AlertDialogAction
           onClick={() => handleAlert(false)}
